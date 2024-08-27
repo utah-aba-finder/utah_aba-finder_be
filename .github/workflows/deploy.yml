@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -36,6 +36,6 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          git remote add heroku https://git.heroku.com/utah_aba-finder_be.git
+          git remote add heroku https://git.heroku.com/uta-aba-finder-be.git
           git push heroku main
           
