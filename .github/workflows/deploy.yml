@@ -1,4 +1,4 @@
-name: Deploy to Heroku
+name: Testing
 
 on:
   push:
@@ -30,13 +30,4 @@ jobs:
 
       - name: Run RSpec tests
         run: bundle exec rspec
-
-      - name: Deploy to Heroku
-        if: success()
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          git remote add heroku https://git.heroku.com/uta-aba-finder-be.git || git remote set-url heroku https://git.heroku.com/uta-aba-finder-be.git
-          git fetch heroku
-          git push heroku main
           
