@@ -12,6 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -30,3 +35,4 @@ jobs:
         run: |
           git remote add heroku https://git.heroku.com/utah_aba-finder_be.git
           git push heroku main
+          
