@@ -17,9 +17,12 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: utah_aba_finder_be_test
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/utah_aba_finder_be_test"
     steps:
       - uses: actions/checkout@v2
 
