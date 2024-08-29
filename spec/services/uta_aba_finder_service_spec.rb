@@ -9,7 +9,7 @@ RSpec.describe UtahAbaFinderService do
         expect(response).to be_a Hash
 
         providers_data = response[:data]
-
+# binding.pry
         expect(providers_data).to be_a Array
         
         providers_data.each do |provider|
