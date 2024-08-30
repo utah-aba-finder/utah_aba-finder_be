@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "localhost:3000", "https://66d0dcfbae9c280008d0da65--utahabalocator.netlify.app/"
+    origins "localhost:3000", "utahabalocator.com"
 
     resource "*",
       headers: :any,
