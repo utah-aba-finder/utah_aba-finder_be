@@ -11,7 +11,7 @@ RSpec.describe "User Sign-Up", type: :request do
       }
     }
 
-    post '/signup', params: sign_up_params
+    post '/api/v1/signup', params: sign_up_params
 
     expect(response).to have_http_status(:created)
 
