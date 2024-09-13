@@ -8,13 +8,16 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  devise_for :users
   
-    namespace :api do
-      namespace :v1 do
-        resources :providers, only: [:index]
-
+  namespace :api do
+    namespace :v1 do
+      devise_for :users, controllers: { registrations: 'api/v1/registrations' }
+      
+      devise_scope :user do
+        post '/signup', to: 'registrations#create'
       end
+      
+      resources :providers, only: [:index]
     end
   end
 end

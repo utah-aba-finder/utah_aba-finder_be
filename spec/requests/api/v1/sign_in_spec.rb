@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe "User Sign-Up", type: :request do
   it 'creates a new user and associates them with a provider' do
+    
     sign_up_params = {
       user: {
         email: 'new_provider@example.com',
