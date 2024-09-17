@@ -7,14 +7,12 @@ class UtahAbaFinderService
   end
 
   def self.get_providers
-    # response = conn.get("/api/v1/providers")
     response = conn.get("/api/v1/providers")
-    # binding.pry
     JSON.parse(response.body, symbolize_names: true)
   end
 
   def self.get_provider(id)
-    response = conn.get("/api/v1/providers/")
+    response = conn.get("/api/v1/providers/#{id}")
     JSON.parse(response.body, symbolize_names: true)
   end
 end

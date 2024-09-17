@@ -12,7 +12,7 @@ RSpec.describe "Provider Request", type: :request do
       providers_response = JSON.parse(response.body, symbolize_names: true)
 
       expect(providers_response).to be_a (Hash)
-      binding.pry
+
       expect(providers_response).to have_key(:data)
       expect(providers_response[:data]).to be_an(Array)
       expect(providers_response[:data].size).to eq(1)
