@@ -1,10 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
+  include RackSessionFix
   respond_to :json
 
   private
 
   def respond_with(resource, _opts = {})
-  binding.pry
     render json: {
       status: {
         code: 200, 
@@ -15,7 +15,6 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def respond_to_on_destroy
-    # binding.pry
     if current_user
       render json: {
         status: 200,
