@@ -1,8 +1,9 @@
 class UtahAbaFinderService
   def self.conn
     # Faraday.new(url: "https://c9d8bfc6-16f1-40be-9dff-f69da7621219.mock.pstmn.io") do |faraday|
-    Faraday.new(url: "http://localhost:4000") do |faraday|
-    # Faraday.new(url: "https://utah-aba-finder-api-c9d143f02ce8.herokuapp.com") do |faraday|
+    # Faraday.new(url: "http://localhost:4000") do |faraday|
+    Faraday.new(url: "https://utah-aba-finder-api-c9d143f02ce8.herokuapp.com") do |faraday|
+      faraday.headers[:Authorization] = ENV['ABA_API_KEY'] || Rails.application.credentials.aba[:api_key]
     end
   end
 
