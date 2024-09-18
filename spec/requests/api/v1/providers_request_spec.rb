@@ -10,7 +10,7 @@ RSpec.describe "Providers Requests", type: :request do
       expect(response.status).to eq(200)
 
       providers_response = JSON.parse(response.body, symbolize_names: true)
-
+      # binding.pry
       expect(providers_response).to be_an(Hash)
 
       expect(providers_response).to have_key(:data)

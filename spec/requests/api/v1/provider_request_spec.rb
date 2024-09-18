@@ -10,7 +10,7 @@ RSpec.describe "Provider Request", type: :request do
       expect(response.status).to eq(200)
 
       providers_response = JSON.parse(response.body, symbolize_names: true)
-
+      # binding.pry
       expect(providers_response).to be_a (Hash)
 
       expect(providers_response).to have_key(:data)
@@ -60,6 +60,8 @@ RSpec.describe "Provider Request", type: :request do
       providers_response[:data][:attributes][:insurance].each do |insurance|
         expect(insurance).to have_key(:name)
         expect(insurance[:name]).to be_a(String)
+        expect(insurance).to have_key(:accepted) 
+        expect(insurance[:accepted]).to be(true)
       end
 
       expect(providers_response[:data][:attributes]).to have_key(:locations)
