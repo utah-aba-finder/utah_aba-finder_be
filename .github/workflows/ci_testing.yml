@@ -24,6 +24,7 @@ jobs:
       RAILS_ENV: test
       DATABASE_URL: "postgres://rails:password@localhost:5432/utah_aba_finder_be_test"
       SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+      ABA_API_KEY: ${{ secrets.ABA_API_KEY }}
       
     steps:
       - uses: actions/checkout@v2
