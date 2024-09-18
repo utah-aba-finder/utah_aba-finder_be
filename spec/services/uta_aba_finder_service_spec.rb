@@ -9,7 +9,6 @@ RSpec.describe UtahAbaFinderService do
         expect(response).to be_a Hash
 
         providers_data = response[:data]
-# binding.pry
         expect(providers_data).to be_a Array
         
         providers_data.each do |provider|
@@ -41,9 +40,6 @@ RSpec.describe UtahAbaFinderService do
           expect(provider[:attributes]).to have_key(:in_clinic_services)
     
           expect(provider[:attributes]).to have_key(:spanish_speakers)
-    
-          # expect(provider[:attributes]).to have_key(:logo)
-          # expect(provider[:attributes][:logo]).to be_a(String)
     
           expect(provider[:attributes]).to have_key(:insurance)
           expect(provider[:attributes][:insurance]).to be_a(Array)
