@@ -10,7 +10,7 @@ RSpec.describe "Providers Requests", type: :request do
       expect(response.status).to eq(200)
 
       providers_response = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
+
       expect(providers_response).to be_an(Hash)
 
       expect(providers_response).to have_key(:data)
@@ -51,8 +51,8 @@ RSpec.describe "Providers Requests", type: :request do
       expect(providers_response[:data][5][:attributes]).to have_key(:spanish_speakers)
       expect(providers_response[:data][5][:attributes][:spanish_speakers]).to be_a(String)
 
-      # expect(providers_response[:data][5][:attributes]).to have_key(:logo)
-      # expect(providers_response[:data][5][:attributes][:logo]).to be_a(String)
+      expect(providers_response[:data][5][:attributes]).to have_key(:logo)
+      expect(providers_response[:data][5][:attributes][:logo]).to be_a(String)
 
       expect(providers_response[:data][5][:attributes]).to have_key(:insurance)
       expect(providers_response[:data][5][:attributes][:insurance]).to be_a(Array)
@@ -60,6 +60,8 @@ RSpec.describe "Providers Requests", type: :request do
       providers_response[:data][5][:attributes][:insurance].each do |insurance|
         expect(insurance).to have_key(:name)
         expect(insurance[:name]).to be_a(String)
+        expect(insurance).to have_key(:accepted) 
+        expect(insurance[:accepted]).to be(true)
       end
 
       expect(providers_response[:data][5][:attributes]).to have_key(:locations)
