@@ -24,7 +24,7 @@ RSpec.describe "Provider Request", type: :request do
       expect(response.status).to eq(200)
 
       providers_response = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
+
       expect(providers_response).to be_a (Hash)
 
       expect(providers_response).to have_key(:data)
@@ -109,7 +109,6 @@ RSpec.describe "Provider Request", type: :request do
     end
 
     it "returns without bearer token" do
-
       get "/api/v1/providers/2"
 
       expect(response.status).to eq(401)
@@ -117,7 +116,6 @@ RSpec.describe "Provider Request", type: :request do
     end
 
     it "returns error unauthorized if current user and provider request id don't match" do
-
       get "/api/v1/providers/3", headers: { 'authorization': @bearer_token }
 
       expect(response.status).to eq(401)
