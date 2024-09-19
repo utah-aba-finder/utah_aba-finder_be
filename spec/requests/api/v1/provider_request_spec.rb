@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "Provider Request", type: :request do
   context "get /api/v1/providers/:id" do
     it "returns one provider with provider attributes" do
+      # WebMock.disable!
 
       get "/api/v1/providers/2"
 
@@ -10,7 +11,7 @@ RSpec.describe "Provider Request", type: :request do
       expect(response.status).to eq(200)
 
       providers_response = JSON.parse(response.body, symbolize_names: true)
-      # binding.pry
+
       expect(providers_response).to be_a (Hash)
 
       expect(providers_response).to have_key(:data)

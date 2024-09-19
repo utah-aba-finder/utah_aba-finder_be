@@ -15,4 +15,11 @@ class UtahAbaFinderService
     response = conn.get("/api/v1/providers/#{id}")
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def self.update_provider(id, provider_data)
+    response = conn.patch("/api/v1/providers/#{id}") do |req|
+      req.body = provider_data
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end

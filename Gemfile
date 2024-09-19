@@ -56,7 +56,7 @@ end
 
 group :test do
   gem "webmock"
-  gem "vcr"
+  # gem "vcr"
 end
 
 group :development do
