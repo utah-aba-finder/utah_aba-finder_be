@@ -13,6 +13,18 @@ RSpec.describe "Update Provider Request", type: :request do
        'User-Agent'=>'Faraday v2.10.0'
         }).
       to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
+    
+      @user = User.create!(email: "test@test.com", password: "password", provider_id: 2)
+      @user_params = {
+          "user": {
+            "email": "test@test.com",
+            "password": "password"
+          }
+        }
+  
+      post "/login", params: @user_params.to_json, headers: { 'Content-Type': 'application/json', "Accept": "application/json" }
+      
+      @bearer_token = response.headers["authorization"]
     end
   
     after(:each) do

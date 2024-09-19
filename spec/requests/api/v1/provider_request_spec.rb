@@ -1,11 +1,25 @@
 require "rails_helper"
 
 RSpec.describe "Provider Request", type: :request do
+  before(:each) do
+    @user = User.create!(email: "test@test.com", password: "password", provider_id: 2)
+    @user_params = {
+        "user": {
+          "email": "test@test.com",
+          "password": "password"
+        }
+      }
+
+    post "/login", params: @user_params.to_json, headers: { 'Content-Type': 'application/json', "Accept": "application/json" }
+    
+    @bearer_token = response.headers["authorization"]
+  end
+
   context "get /api/v1/providers/:id" do
     it "returns one provider with provider attributes" do
       WebMock.disable!
 
-      get "/api/v1/providers/2"
+      get "/api/v1/providers/2", headers: { 'authorization': @bearer_token }
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
