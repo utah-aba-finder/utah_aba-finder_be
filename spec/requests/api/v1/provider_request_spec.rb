@@ -108,5 +108,22 @@ RSpec.describe "Provider Request", type: :request do
         expect(area_served[:county]).to be_a(String)
       end
     end
+
+    it "returns error without bearer token" do
+      get "/api/v1/providers/2"
+
+      expect(response.status).to eq(401)
+      expect(response.body).to eq("You need to sign in or sign up before continuing.")
+    end
+
+    it "returns error unauthorized if current user and provider request id don't match" do
+      get "/api/v1/providers/3", headers: { 'authorization': @bearer_token }
+
+      expect(response.status).to eq(401)
+
+      providers_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(providers_response[:error]).to eq("Unauthorized")
+    end
   end
 end
