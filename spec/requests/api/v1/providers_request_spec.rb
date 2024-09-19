@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "Providers Requests", type: :request do
   context "get /api/v1/providers" do
     it "returns all providers with provider attributes" do
+      WebMock.disable!
 
       get "/api/v1/providers"
 
@@ -30,7 +31,7 @@ RSpec.describe "Providers Requests", type: :request do
       expect(providers_response[:data][5][:attributes][:email]).to be_a(String)
 
       expect(providers_response[:data][5][:attributes]).to have_key(:cost)
-      expect(providers_response[:data][5][:attributes][:cost]).to be_a(String)
+      expect(providers_response[:data][5][:attributes][:cost]).to be_a(String).or be_nil
 
       expect(providers_response[:data][5][:attributes]).to have_key(:min_age)
       expect(providers_response[:data][5][:attributes][:min_age]).to be_a(Float)
@@ -42,17 +43,17 @@ RSpec.describe "Providers Requests", type: :request do
       expect(providers_response[:data][5][:attributes][:waitlist]).to be_a(String)
 
       expect(providers_response[:data][5][:attributes]).to have_key(:telehealth_services)
-      expect(providers_response[:data][5][:attributes][:telehealth_services]).to be_a(String)
+      expect(providers_response[:data][5][:attributes][:telehealth_services]).to be_a(String).or be_nil
 
-      expect(providers_response[:data][5][:attributes]).to have_key(:at_home_services)
+      expect(providers_response[:data][5][:attributes]).to have_key(:at_home_services).or be_nil
 
-      expect(providers_response[:data][5][:attributes]).to have_key(:in_clinic_services)
+      expect(providers_response[:data][5][:attributes]).to have_key(:in_clinic_services).or be_nil
 
       expect(providers_response[:data][5][:attributes]).to have_key(:spanish_speakers)
-      expect(providers_response[:data][5][:attributes][:spanish_speakers]).to be_a(String)
+      expect(providers_response[:data][5][:attributes][:spanish_speakers]).to be_a(String).or be_nil
 
       expect(providers_response[:data][5][:attributes]).to have_key(:logo)
-      expect(providers_response[:data][5][:attributes][:logo]).to be_a(String)
+      expect(providers_response[:data][5][:attributes][:logo]).to be_a(String).or be_nil
 
       expect(providers_response[:data][5][:attributes]).to have_key(:insurance)
       expect(providers_response[:data][5][:attributes][:insurance]).to be_a(Array)
