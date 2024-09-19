@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Providers Requests", type: :request do
   context "get /api/v1/providers" do
     it "returns all providers with provider attributes" do
-      # WebMock.disable!
+      WebMock.disable!
 
       get "/api/v1/providers"
 

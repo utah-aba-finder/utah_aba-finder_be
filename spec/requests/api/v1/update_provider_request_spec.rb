@@ -12,7 +12,7 @@ RSpec.describe "Update Provider Request", type: :request do
        'Authorization'=>'be6205db57ce01863f69372308c41e3a',
        'User-Agent'=>'Faraday v2.10.0'
         }).
-      to_return(status: 200, body: "", headers: {})
+      to_return(status: 200, body: { success: true }.to_json, headers: { 'Content-Type' => 'application/json' })
     end
   
     after(:each) do
@@ -20,11 +20,21 @@ RSpec.describe "Update Provider Request", type: :request do
     end
 
     it "updates provider" do
-
-      patch "/api/v1/providers/1"
+      patch "/api/v1/providers/1", params: {
+        data: {
+          id: 1,
+          type: "provider",
+          attributes: {
+            name: "Updated Provider Name"
+          }
+        }
+      }.to_json, headers: { 'Content-Type' => 'application/json', 'Authorization' => 'be6205db57ce01863f69372308c41e3a' }
 
       expect(response).to be_successful
+      expect(response.status).to eq(200)
 
+      parsed_response = JSON.parse(response.body, symbolize_names: true)
+      expect(parsed_response[:success]).to be true
     end
   end
 end

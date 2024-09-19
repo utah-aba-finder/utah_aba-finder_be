@@ -17,6 +17,7 @@ class UtahAbaFinderService
   end
 
   def self.update_provider(id, provider_data)
+    # binding.pry
     response = conn.patch("/api/v1/providers/#{id}") do |req|
       req.body = provider_data
     end
