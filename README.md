@@ -74,7 +74,134 @@ Now you can access the API using another application or [Postman](https://www.po
   - If running on the modified port: `http://localhost:4000`
   
 - **Format**: All endpoints return data in **JSON** format.
-  
+
+
+### Register a User
+
+**`POST /signup`**
+
+Creates a User with an Email and Password
+
+#### Request Body Example:
+```json
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "password"
+    }
+}
+```
+### Response Example:
+```
+{
+    "status": {
+        "code": 200,
+        "message": "Signed up sucessfully."
+    },
+    "data": {
+        "id": 1,
+        "email": "test@test.com",
+        "created_at": "2024-09-20T01:35:20.162Z",
+        "provider_id": null,
+        "created_date": "09/20/2024"
+    }
+}
+```
+If email is already taken:
+```
+{
+    "status": {
+        "code": 422,
+        "message": "User couldn't be created successfully. Email has already been taken"
+    }
+}
+```
+### Additional Steps: Assigning a Provider ID
+You will have to manually assign the User a Provider ID. To do this, open a rails console:
+```
+rails console
+```
+Find the User by ID and assign it a Provider ID, replace :id with User ID and :provider_id with Provider ID
+```
+User.find(:id).update!(provider_id: :provider_id)
+```
+At this point, you can close rails console
+```
+exit
+```
+
+### Sign in a User
+
+**`POST /login`**
+
+Login a User with an Email and Password
+
+#### Request Body Example:
+```json
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "password"
+    }
+}
+```
+### Response Example:
+```
+{
+    "status": {
+        "code": 200,
+        "message": "Logged in successfully"
+    },
+    "data": {
+        "id": 1,
+        "email": "test@test.com",
+        "created_at": "2024-09-20T02:16:22.867Z",
+        "provider_id": null,
+        "created_date": "09/20/2024"
+    }
+}
+```
+If wrong credentials:
+```
+Invalid Email or password.
+```
+###Note:
+After logging in, save the bearer token returned in the headers under Authorization. This token is required for accessing endpoints that need authentication.
+
+### Sign out a User
+
+**`POST /logout`**
+
+Logout a User
+
+#### Request Headers:
+```Authorization: Bearer <token>}
+```
+#### Request Body Example:
+```json
+{
+    "user": {
+        "email": "test@test.com",
+        "password": "password"
+    }
+}
+```
+### Response Example:
+```
+{
+    "status": 200,
+    "message": "logged out successfully"
+}
+```
+When not signed in or wrong bearer token:
+```
+{
+    "status": 401,
+    "message": "Couldn't find an active session."
+}
+```
+
+
 ### Get All Providers
 
 **`GET /api/v1/providers`**
@@ -177,11 +304,19 @@ Retrieves a list of all ABA providers, including their details such as name, loc
   ]
 }
 ```
+
+## The Following Endpoints Require a User to be Registered and Signed In
 ### Get Provider by ID
 
 - **`GET /api/v1/providers/:id`**
+  
+  #### Request Headers:
+```Authorization: Bearer <token>}
+```
 
 Retrieves the details of a single provider based on the provided :id. Replace :id with the actual provider's ID (e.g., /api/v1/providers/1).
+#### Note:
+A user can only request provider information for the provider they are associated with.
 #### Response Example:
 
 ```json
@@ -228,11 +363,23 @@ Retrieves the details of a single provider based on the provided :id. Replace :i
       ]
     }
   ```
+If User.provider_id does not match the Provider ID
+```
+{
+    "error": "Unauthorized"
+}
+```
 ### UPDATE Provider by ID
 - **`PATCH /api/v1/providers/1`**
 **`PATCH /api/v1/providers/:id`**
 
 Updates a provider's details, including their name, locations, services, and other information. Replace `:id` with the provider's ID you wish to update (e.g., `/api/v1/providers/1`).
+#### Note:
+A user can only update provider information for the provider they are associated with.
+  #### Request Headers:
+```
+Authorization: Bearer <token>}
+```
 
 #### Request Body Example:
 
@@ -275,49 +422,55 @@ Updates a provider's details, including their name, locations, services, and oth
 #### Response Example:
 
 ```json
-  {
-    "data": [
-        {
-            "id": 1,
-            "type": "provider",
-            "attributes": {
-                "name": "A BridgeCare ABA",
-                "locations": [
-                    {
-                        "name": "https://www.bridgecareaba.com/locations/aba-therapy-in-utah",
-                        "address_1": null,
-                        "address_2": null,
-                        "city": null,
-                        "state": null,
-                        "zip": null,
-                        "phone": "801-435-8088"
-                    }
-                ],
-                "website": "https://www.bridgecareaba.com/locations/utah",
-                "email": "info@bridgecareaba.com",
-                "cost": "N/A",
-                "insurance": [
-                    {
-                        "name": "Contact us"
-                    }
-                ],
-                "counties_served": [
-                    {
-                        "county": "Salt Lake, Utah, Davis, Weber"
-                    }
-                ],
-                "min_age": 2.0,
-                "max_age": 16.0,
-                "waitlist": "No",
-                "telehealth_services": "Yes",
-                "spanish_speakers": "Yes",
-                "at_home_services": null,
-                "in_clinic_services": null
-            }
+{
+"data": [
+    {
+        "id": 1,
+        "type": "provider",
+        "attributes": {
+            "name": "A BridgeCare ABA",
+            "locations": [
+                {
+                    "name": "https://www.bridgecareaba.com/locations/aba-therapy-in-utah",
+                    "address_1": null,
+                    "address_2": null,
+                    "city": null,
+                    "state": null,
+                    "zip": null,
+                    "phone": "801-435-8088"
+                }
+            ],
+            "website": "https://www.bridgecareaba.com/locations/utah",
+            "email": "info@bridgecareaba.com",
+            "cost": "N/A",
+            "insurance": [
+                {
+                    "name": "Contact us"
+                }
+            ],
+            "counties_served": [
+                {
+                    "county": "Salt Lake, Utah, Davis, Weber"
+                }
+            ],
+            "min_age": 2.0,
+            "max_age": 16.0,
+            "waitlist": "No",
+            "telehealth_services": "Yes",
+            "spanish_speakers": "Yes",
+            "at_home_services": null,
+            "in_clinic_services": null
         }
-      ]
     }
-  ```
+  ]
+}
+```
+If User.provider_id does not match the Provider ID
+```
+{
+    "error": "Unauthorized"
+}
+```
 
 ## Related Links & Repositories
 - [Utah ABA Finder API Repository](https://github.com/utah-aba-finder/utah-aba-finder-api)
