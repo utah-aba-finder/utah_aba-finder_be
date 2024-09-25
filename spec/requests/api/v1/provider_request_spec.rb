@@ -1,11 +1,25 @@
 require "rails_helper"
 
 RSpec.describe "Provider Request", type: :request do
+  before(:each) do
+    @user = User.create!(email: "test@test.com", password: "password", provider_id: 2)
+    @user_params = {
+        "user": {
+          "email": "test@test.com",
+          "password": "password"
+        }
+      }
+
+    post "/login", params: @user_params.to_json, headers: { 'Content-Type': 'application/json', "Accept": "application/json" }
+    
+    @bearer_token = response.headers["authorization"]
+  end
+
   context "get /api/v1/providers/:id" do
     it "returns one provider with provider attributes" do
       WebMock.disable!
 
-      get "/api/v1/providers/2"
+      get "/api/v1/providers/2", headers: { 'authorization': @bearer_token }
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
@@ -93,6 +107,23 @@ RSpec.describe "Provider Request", type: :request do
         expect(area_served).to have_key(:county)
         expect(area_served[:county]).to be_a(String)
       end
+    end
+
+    it "returns error without bearer token" do
+      get "/api/v1/providers/2"
+
+      expect(response.status).to eq(401)
+      expect(response.body).to eq("You need to sign in or sign up before continuing.")
+    end
+
+    it "returns error unauthorized if current user and provider request id don't match" do
+      get "/api/v1/providers/3", headers: { 'authorization': @bearer_token }
+
+      expect(response.status).to eq(401)
+
+      providers_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(providers_response[:error]).to eq("Unauthorized")
     end
   end
 end
