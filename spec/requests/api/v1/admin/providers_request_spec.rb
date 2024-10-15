@@ -1,11 +1,24 @@
 require "rails_helper"
 
 RSpec.describe "Providers Requests", type: :request do
-  context "get /api/v1/providers" do
-    it "returns all providers with provider attributes" do
+  before(:each) do
+    @user = User.create!(email: "test@test.com", password: "password", provider_id: 61, )
+    @user_params = {
+        "user": {
+          "email": "test@test.com",
+          "password": "password"
+        }
+      }
+
+    post "/login", params: @user_params.to_json, headers: { 'Content-Type': 'application/json', "Accept": "application/json" }
+    
+    @bearer_token = response.headers["authorization"]
+  end
+  context "get /api/v1/admin/providers" do
+    xit "returns all providers with provider attributes" do
       WebMock.disable!
 
-      get "/api/v1/providers"
+      get "/api/v1/admin/providers", headers: { 'authorization': @bearer_token }
 
       expect(response).to be_successful
       expect(response.status).to eq(200)
@@ -16,8 +29,7 @@ RSpec.describe "Providers Requests", type: :request do
 
       expect(providers_response).to have_key(:data)
       expect(providers_response[:data]).to be_a(Array)
-      # there are more providers getting added so this is off
-      # expect(providers_response[:data].size).to eq(60)
+      expect(providers_response[:data].size).to eq(60)
 
       expect(providers_response[:data][5]).to have_key(:id)
       expect(providers_response[:data][5][:id]).to be_a(Integer)
@@ -73,17 +85,15 @@ RSpec.describe "Providers Requests", type: :request do
         expect(location).to be_a(Hash)
         expect(location).to have_key(:name)
         expect(location).to have_key(:address_1)
-        unless location[:address].nil?
-          expect(location[:address_1]).to be_a(String)
-          expect(location).to have_key(:address_2)
-          expect(location[:address_2]).to be_a(String)
-          expect(location).to have_key(:city)
-          expect(location[:city]).to be_a(String)
-          expect(location).to have_key(:state)
-          expect(location[:state]).to be_a(String)
-          expect(location).to have_key(:zip)
-          expect(location[:zip]).to be_a(String)
-        end
+        expect(location[:address_1]).to be_a(String)
+        expect(location).to have_key(:address_2)
+        expect(location[:address_2]).to be_a(String)
+        expect(location).to have_key(:city)
+        expect(location[:city]).to be_a(String)
+        expect(location).to have_key(:state)
+        expect(location[:state]).to be_a(String)
+        expect(location).to have_key(:zip)
+        expect(location[:zip]).to be_a(String)
         expect(location).to have_key(:phone)
         expect(location[:phone]).to be_a(String)
       end

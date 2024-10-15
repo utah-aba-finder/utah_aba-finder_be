@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :providers, only: [:index, :show, :update]
+
+      namespace :admin do
+        resources :providers, only: [:index, :show, :update, :create]
+        # resources :users, only: [:index, :show, :update, :create]
+
+      end
     end
   end
 end
