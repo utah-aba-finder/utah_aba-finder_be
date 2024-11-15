@@ -25,8 +25,8 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :providers, only: [:index, :show, :update, :create]
         # resources :users, only: [:index, :show, :update, :create]
-
       end
+      post '/payments/create_payment_intent', to: 'payments#create_payment_intent'
     end
   end
 end
