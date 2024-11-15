@@ -1,4 +1,4 @@
-class PaymentsController < ApplicationController
+class Api::V1::PaymentsController < ApplicationController
   # skip_before_action :verify_authenticity_token #we think this is covered by our cors config
 
   def create_payment_intent
