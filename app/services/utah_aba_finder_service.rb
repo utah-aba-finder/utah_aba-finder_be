@@ -39,4 +39,10 @@ class UtahAbaFinderService
   end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def self.delete_provider(provider_id)
+    response = conn.delete("/api/v1/providers/#{provider_id}")
+    # Return the full response so the caller can check the status and handle it appropriately
+    response
+  end
 end

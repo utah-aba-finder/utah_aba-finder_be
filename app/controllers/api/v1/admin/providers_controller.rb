@@ -7,15 +7,25 @@ class Api::V1::Admin::ProvidersController < ApplicationController
   end
 
   def show
-      render json: UtahAbaFinderService.get_provider(params[:id])
+    render json: UtahAbaFinderService.get_provider(params[:id])
   end
 
   def create
-      render json: UtahAbaFinderService.create_provider(params)
+    render json: UtahAbaFinderService.create_provider(params)
   end
 
   def update
-      render json: UtahAbaFinderService.update_provider(params[:id], params)
+    render json: UtahAbaFinderService.update_provider(params[:id], params)
+  end
+
+  def destroy
+    provider_id = params[:id]
+    response = UtahAbaFinderService.delete_provider(provider_id)
+    if response.success?
+      head :no_content
+    else
+      render json: { error: "Provider not found" }, status: :not_found
+    end
   end
 
   private
