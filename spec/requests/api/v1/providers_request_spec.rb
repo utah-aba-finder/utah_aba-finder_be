@@ -38,7 +38,7 @@ RSpec.describe "Providers Requests", type: :request do
       expect(providers_response[:data][5][:attributes][:min_age]).to be_a(Float)
 
       expect(providers_response[:data][5][:attributes]).to have_key(:max_age)
-      expect(providers_response[:data][5][:attributes][:max_age]).to be_a(Float)
+      expect(providers_response[:data][5][:attributes][:max_age]).to be(nil)
 
       expect(providers_response[:data][5][:attributes]).to have_key(:waitlist)
       expect(providers_response[:data][5][:attributes][:waitlist]).to be_a(String)
@@ -93,8 +93,8 @@ RSpec.describe "Providers Requests", type: :request do
 
       providers_response[:data][5][:attributes][:counties_served].each do |area_served|
         expect(area_served).to be_a(Hash)
-        expect(area_served).to have_key(:county)
-        expect(area_served[:county]).to be_a(String)
+        expect(area_served).to have_key(:county_name)
+        expect(area_served[:county_name]).to be_a(String)
       end
     end
   end

@@ -69,7 +69,7 @@ RSpec.describe UtahAbaFinderService do
     
           provider[:attributes][:counties_served].each do |area_served|
             expect(area_served).to be_a(Hash)
-            expect(area_served).to have_key(:county)
+            expect(area_served).to have_key(:county_name)
           end
         end
       end

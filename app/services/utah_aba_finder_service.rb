@@ -39,4 +39,14 @@ class UtahAbaFinderService
   end
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def self.get_states
+    response = conn.get("/api/v1/states")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.get_counties_by_state(state_id)
+    response = conn.get("/api/v1/states/#{state_id}/counties")
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end
