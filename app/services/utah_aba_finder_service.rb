@@ -6,13 +6,18 @@ class UtahAbaFinderService
       faraday.headers[:Authorization] = ENV['ABA_API_KEY'] || Rails.application.credentials.aba[:api_key]
     #localhost server
     # Faraday.new(url: "http://localhost:4000") do |faraday|
-      # faraday.headers[:Authorization] = ENV['ABA_API_KEY'] || Rails.application.credentials.localhost[:api_key]
+    #   faraday.headers[:Authorization] = ENV['ABA_API_KEY'] || Rails.application.credentials.localhost[:api_key]
       faraday.headers['Content-Type'] = 'application/json'
     end
   end
 
   def self.get_providers
     response = conn.get("/api/v1/providers")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.get_providers_by_state_id(state_id, provider_type)
+    response = conn.get("/api/v1/states/#{state_id}/providers?provider_type=#{provider_type}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
