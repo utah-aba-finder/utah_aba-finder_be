@@ -54,4 +54,29 @@ class UtahAbaFinderService
     response = conn.get("/api/v1/states/#{state_id}/counties")
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def self.get_all_insurances
+    response = conn.get("/api/v1/insurances")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.update_insurance(id, insurance_data)
+    response = conn.patch("/api/v1/insurances/#{id}") do |req|
+      req.body = insurance_data.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.create_insurance(insurance_data)
+    response = conn.post("/api/v1/insurances") do |req|
+      req.body = insurance_data.to_json
+    end
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def self.delete_insurance(id)
+    response = conn.delete("/api/v1/insurances/#{id}")
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
 end
