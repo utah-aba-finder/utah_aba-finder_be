@@ -25,10 +25,13 @@ Rails.application.routes.draw do
         resources :counties, only: [:index]
         resources :providers, only: [:index], action: :index, controller: '/api/v1/states/providers'
       end
+      resources :insurances, only: [:index]
+
 
       namespace :admin do
         resources :providers, only: [:index, :show, :update, :create]
         # resources :users, only: [:index, :show, :update, :create]
+        resources :insurances, only: [:create, :update, :destroy]
       end
       post '/payments/create_payment_intent', to: 'payments#create_payment_intent'
     end
