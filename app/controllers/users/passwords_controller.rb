@@ -1,12 +1,10 @@
 class Users::PasswordsController < Devise::PasswordsController
 
   def edit
-    Rails.logger.debug "Users::PasswordsController#edit called"
     render :edit
   end
 
   def update
-    Rails.logger.debug "Users::PasswordsController#update called"
     super
   end
 end
