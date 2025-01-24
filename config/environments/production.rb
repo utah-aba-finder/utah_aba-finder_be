@@ -87,6 +87,7 @@ Rails.application.configure do
   #   authentication: 'login',
   #   enable_starttls_auto: true
   # }
+  # SETUP FOR OUTLOOK EMAILS 
 
   # Ignore bad email addresses and do not raise email delivery errors.
   config.action_mailer.raise_delivery_errors = false

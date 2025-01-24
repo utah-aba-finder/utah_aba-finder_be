@@ -1,5 +1,4 @@
 <h2>Change your password</h2>
-<p>This is a test message to verify that the view is being rendered.</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= hidden_field_tag :reset_password_token, params[:reset_password_token] %>
