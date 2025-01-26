@@ -138,11 +138,9 @@ RSpec.describe 'Providers API', type: :request do
       produces 'application/json'
       description 'Retrieves a single provider by their ID. Requires User login with authorization to access that providers info.'
       security [bearer_auth: []]
-  
-      # Define the required path parameter
       parameter name: :id, in: :path, type: :integer, description: 'ID of the provider'
+      
       let(:id) {40}
-
       let(:Authorization) { "Bearer valid_token" }
 
       response(200, 'successful') do

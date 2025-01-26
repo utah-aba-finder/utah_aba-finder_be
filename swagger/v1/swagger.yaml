@@ -267,6 +267,60 @@ paths:
                               format: date-time
                             status:
                               type: string
+  "/signup":
+    post:
+      summary: Registers a new user
+      tags:
+      - Users
+      security: []
+      parameters: []
+      responses:
+        '200':
+          description: User successfully registered
+          headers:
+            authorization:
+              schema:
+                type: string
+              description: JWT to send with future requests to for user auth
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        example: 200
+                      message:
+                        type: string
+                        example: Signed up successfully.
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      email:
+                        type: string
+                        format: email
+                        example: user@example.com
+                      created_at:
+                        type: string
+                        format: date-time
+                      provider_id:
+                        type: string
+                        nullable: true
+                        example: '61'
+                      role:
+                        type: string
+                        example: provider_admin
+                      created_date:
+                        type: string
+                        example: 01/01/2025
+        '422':
+          description: User creation failed due to validation errors
 servers:
 - url: https://uta-aba-finder-be-97eec9f967d0.herokuapp.com/
   description: Deployed Server

@@ -7,20 +7,37 @@ RSpec.describe 'User API', type: :request do
       consumes 'application/json'
       produces 'application/json'
       security []
+      parameter name: :user, in: :body, required: true, description: 'User registration data'
 
-      parameter name: :user, in: :body, required: true, description: 'User registration data' do
-        schema type: :object,
-              properties: {
-                email: { type: :string, format: :email, example: 'user@example.com' },
-                password: { type: :string, minLength: 6, example: 'password123' },
-                password_confirmation: { type: :string, minLength: 6, example: 'password123' }
-              },
-              required: ['email', 'password', 'password_confirmation']
-      end
-
+      
       response '200', 'User successfully registered' do
-        let(:user) { { user: { email: 'user@example.com', password: 'password123', password_confirmation: 'password123', provider_id: '61' } } }
+        # Define Header response
+        header 'authorization', schema: { type: :string }, description: 'JWT to send with future requests to for user authorization.'
+        # Define the expected schema for the response
+        schema type: :object,
+        properties: {
+          status: {
+            type: :object,
+            properties: {
+              code: {type: :integer, example: 200 },
+              message: { type: :string, example: "Signed up successfully." }
+            }
+          },
+          data: {
+            type: :object,
+            properties: {
+              id: { type: :integer, example: 1 },
+              email: { type: :string, format: :email, example: 'user@example.com' },
+              created_at: { type: :string, format: 'date-time' },
+              provider_id: { type: :string, nullable: true, example: '61' },
+              role: { type: :string, example: "provider_admin"},
+              created_date: { type: :string, example: '01/01/2025' }
+            },
+          }
+        }
 
+        let(:user) { { user: { email: 'user@example.com', password: 'password123', password_confirmation: 'password123', provider_id: '61' } } }
+        
         run_test! do |response|
           data = JSON.parse(response.body)
           expect(response.code).to eq("200") # Ensure the response code is 200
@@ -28,6 +45,11 @@ RSpec.describe 'User API', type: :request do
           expect(data['status']['message']).to eq('Signed up successfully.')
           expect(data['data']['email']).to eq('user@example.com')
           expect(data['data']['id']).to be_present
+          expect(data['data']['role']).to be_present
+          expect(data['data']['created_at']).to be_present
+          expect(data['data']['created_date']).to be_present
+          expect(data['data']['provider_id']).to be_nil
+          expect(response.headers['authorization']).to be_present
         end
       end
 
@@ -55,7 +77,7 @@ RSpec.describe 'User API', type: :request do
   #       schema type: :object,
   #              properties: {
   #                email: { type: :string, format: :email, example: 'user@example.com' },
-  #                password: { type: :string, minLength: 6, example: 'password123' }
+  #                password: { type: :string, example: 'password123' }
   #              },
   #              required: ['email', 'password']
   #     end
