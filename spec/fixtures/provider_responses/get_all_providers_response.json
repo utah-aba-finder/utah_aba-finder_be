@@ -1,0 +1,544 @@
+{
+  "data": [
+    {
+      "id": 40,
+      "type": "provider",
+      "states": [
+        "Utah"
+      ],
+      "attributes": {
+        "name": "Kyo Autism Therapy",
+        "provider_type": [
+          {
+            "id": 1,
+            "name": "ABA Therapy"
+          }
+        ],
+        "locations": [
+          {
+            "id": 46,
+            "name": "Orem Clinic",
+            "address_1": "504 West 800 North",
+            "address_2": null,
+            "city": "Orem",
+            "state": "UT",
+            "zip": "84057",
+            "phone": "1-877-264-6747"
+          },
+          {
+            "id": 205,
+            "name": "Murray Clinic",
+            "address_1": "5242 S college drive",
+            "address_2": "Suite 380",
+            "city": "Murray",
+            "state": "UT",
+            "zip": "84123",
+            "phone": ""
+          }
+        ],
+        "website": "https://kyocare.com",
+        "email": "clientservices@kyocare.com",
+        "cost": "Private pay accepted",
+        "insurance": [
+          {
+            "name": "Regence (BCBS)",
+            "id": 6,
+            "accepted": true
+          },
+          {
+            "name": "Select Health",
+            "id": 24,
+            "accepted": true
+          },
+          {
+            "name": "United HealthCare (UHC)",
+            "id": 29,
+            "accepted": true
+          },
+          {
+            "name": "Aetna",
+            "id": 3,
+            "accepted": true
+          },
+          {
+            "name": "Cigna",
+            "id": 9,
+            "accepted": true
+          },
+          {
+            "name": "UMR (UHC)",
+            "id": 27,
+            "accepted": true
+          },
+          {
+            "name": "University of Utah Health Plans",
+            "id": 30,
+            "accepted": true
+          },
+          {
+            "name": "Medicaid",
+            "id": 19,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 6,
+            "county_name": "Davis"
+          },
+          {
+            "county_id": 18,
+            "county_name": "Salt Lake"
+          },
+          {
+            "county_id": 25,
+            "county_name": "Utah"
+          }
+        ],
+        "min_age": 2.0,
+        "max_age": 18.0,
+        "waitlist": "No",
+        "telehealth_services": "Yes",
+        "spanish_speakers": "Yes",
+        "at_home_services": "Yes",
+        "in_clinic_services": "Yes",
+        "logo": "https://res.cloudinary.com/don662dbn/image/upload/fl_preserve_transparency/v1724691619/kyo-aba-logo_oln2cu.jpg?_s=public-apps",
+        "updated_last": "2024-10-18T15:05:58.098Z",
+        "status": "approved"
+      }
+    },
+    {
+      "id": 15,
+      "type": "provider",
+      "states": [
+        "Utah"
+      ],
+      "attributes": {
+        "name": "Autism Solutions",
+        "provider_type": [
+          {
+            "id": 1,
+            "name": "ABA Therapy"
+          }
+        ],
+        "locations": [
+          {
+            "id": 18,
+            "name": "Draper",
+            "address_1": "12222 South 1000 East, Suite 3",
+            "address_2": null,
+            "city": "Draper",
+            "state": "UT",
+            "zip": "84020",
+            "phone": "(801) 987-3592 Ext. 1"
+          },
+          {
+            "id": 233,
+            "name": "West Jordan ",
+            "address_1": "1785 West 7888 South ",
+            "address_2": null,
+            "city": "West Jordan",
+            "state": "UT",
+            "zip": "84088",
+            "phone": "(801) 987-3592 Ext. 2"
+          },
+          {
+            "id": 234,
+            "name": "Sunset ",
+            "address_1": "2649 North Main Street ",
+            "address_2": null,
+            "city": "Sunset",
+            "state": "UT",
+            "zip": "84015",
+            "phone": "(801) 987-3592 Ext. 3 "
+          },
+          {
+            "id": 19,
+            "name": "Clearfield ",
+            "address_1": "1295 State Street ",
+            "address_2": null,
+            "city": "Clearfield",
+            "state": "UT",
+            "zip": "84015",
+            "phone": "(801) 987-3592 Ext. 3"
+          }
+        ],
+        "website": "http://autismsolutionsutah.com",
+        "email": "info@autismsolutionsutah.com",
+        "cost": "Initial Assessment: $600-$800 \nRBT: $40 per hour with a minimum of 6 hours per week\nBCBA: $100 per hour with a minimum of 6 hours per month \nAssessment (Completed every 6 months): $600-$800 ",
+        "insurance": [
+          {
+            "name": "Blue Cross Blue Shield (BCBS)",
+            "id": 8,
+            "accepted": true
+          },
+          {
+            "name": "Medicaid",
+            "id": 19,
+            "accepted": true
+          },
+          {
+            "name": "Select Health",
+            "id": 24,
+            "accepted": true
+          },
+          {
+            "name": "Contact us",
+            "id": 1,
+            "accepted": true
+          },
+          {
+            "name": "Anthem (BCBS)",
+            "id": 5,
+            "accepted": true
+          },
+          {
+            "name": "Regence (BCBS)",
+            "id": 6,
+            "accepted": true
+          },
+          {
+            "name": "Healthy U Medicaid (University of Utah Health Plans)",
+            "id": 16,
+            "accepted": true
+          },
+          {
+            "name": "Magellan",
+            "id": 18,
+            "accepted": true
+          },
+          {
+            "name": "Molina",
+            "id": 20,
+            "accepted": true
+          },
+          {
+            "name": "Public Employees Health Program (PEHP)",
+            "id": 23,
+            "accepted": true
+          },
+          {
+            "name": "University of Utah Health Plans",
+            "id": 30,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 18,
+            "county_name": "Salt Lake"
+          },
+          {
+            "county_id": 6,
+            "county_name": "Davis"
+          },
+          {
+            "county_id": 25,
+            "county_name": "Utah"
+          },
+          {
+            "county_id": 23,
+            "county_name": "Tooele"
+          }
+        ],
+        "min_age": 2.0,
+        "max_age": 18.0,
+        "waitlist": "Sunset - 8 months / West Jordan - 10 months / Draper - 1 year ",
+        "telehealth_services": "No ",
+        "spanish_speakers": "Yes, Limited ",
+        "at_home_services": "No ",
+        "in_clinic_services": "Yes",
+        "logo": "https://res.cloudinary.com/don662dbn/image/upload/fl_preserve_transparency/v1724691616/autism-solutions-logo_updhbw.jpg?_s=public-apps",
+        "updated_last": "2024-10-24T17:21:30.670Z",
+        "status": "approved"
+      }
+    },
+    {
+      "id": 368,
+      "type": "provider",
+      "states": [
+        "Utah"
+      ],
+      "attributes": {
+        "name": "Child Development and Neuropsychology Center",
+        "provider_type": [
+          {
+            "id": 2,
+            "name": "Autism Evaluation"
+          }
+        ],
+        "locations": [
+          {
+            "id": 401,
+            "name": "Salt Lake Office",
+            "address_1": "275 E. South Temple, Ste. 345",
+            "address_2": null,
+            "city": "Salt Lake City",
+            "state": "UT",
+            "zip": "84111",
+            "phone": "(801) 355-0195"
+          }
+        ],
+        "website": "http://www.cdnc-ut.com/",
+        "email": "office.mgr@cdnc-ut.com",
+        "cost": "Contact office",
+        "insurance": [
+          {
+            "name": "Select Health",
+            "id": 24,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 30,
+            "county_name": "Contact Us"
+          }
+        ],
+        "min_age": 1.0,
+        "max_age": 18.0,
+        "waitlist": "contact us",
+        "telehealth_services": "",
+        "spanish_speakers": "contact-us",
+        "at_home_services": "",
+        "in_clinic_services": "",
+        "logo": "https://res.cloudinary.com/don662dbn/image/upload/v1732245994/Screenshot_2024-11-21_at_8.26.26_PM_aekkmu.png",
+        "updated_last": "2024-12-04T18:55:08.236Z",
+        "status": "approved"
+      }
+    },
+    {
+      "id": 232,
+      "type": "provider",
+      "states": [
+        "Utah"
+      ],
+      "attributes": {
+        "name": "Sandstone Autism Services",
+        "provider_type": [
+          {
+            "id": 1,
+            "name": "ABA Therapy"
+          }
+        ],
+        "locations": [
+          {
+            "id": 235,
+            "name": "Salem Clinic",
+            "address_1": "150 E 400 N ",
+            "address_2": "Ste  100",
+            "city": "Salem",
+            "state": "UT",
+            "zip": "84651",
+            "phone": "(801) 696-9779"
+          },
+          {
+            "id": 236,
+            "name": "Hyde Clinic",
+            "address_1": "338 W. 300 N. ",
+            "address_2": "Ste 5",
+            "city": "Hyde Park",
+            "state": "UT",
+            "zip": "84318",
+            "phone": ""
+          }
+        ],
+        "website": "https://www.sandstoneautismservices.org/",
+        "email": "Sandstoneautismservices@gmail.com",
+        "cost": "Contact Us",
+        "insurance": [
+          {
+            "name": "Aetna",
+            "id": 3,
+            "accepted": true
+          },
+          {
+            "name": "Meritain (Aetna)",
+            "id": 4,
+            "accepted": true
+          },
+          {
+            "name": "Anthem (BCBS)",
+            "id": 5,
+            "accepted": true
+          },
+          {
+            "name": "Regence (BCBS)",
+            "id": 6,
+            "accepted": true
+          },
+          {
+            "name": "Blue Cross Blue Shield (BCBS)",
+            "id": 8,
+            "accepted": true
+          },
+          {
+            "name": "Cigna",
+            "id": 9,
+            "accepted": true
+          },
+          {
+            "name": "EMI Health",
+            "id": 12,
+            "accepted": true
+          },
+          {
+            "name": "Evernorth (Cigna)",
+            "id": 13,
+            "accepted": true
+          },
+          {
+            "name": "Flexible Spending Account (FSA)",
+            "id": 14,
+            "accepted": true
+          },
+          {
+            "name": "Healthy U Medicaid (University of Utah Health Plans)",
+            "id": 16,
+            "accepted": true
+          },
+          {
+            "name": "Health Savings Account (HSA)",
+            "id": 17,
+            "accepted": true
+          },
+          {
+            "name": "Medicaid",
+            "id": 19,
+            "accepted": true
+          },
+          {
+            "name": "Molina",
+            "id": 20,
+            "accepted": true
+          },
+          {
+            "name": "MotivHealth",
+            "id": 21,
+            "accepted": true
+          },
+          {
+            "name": "Optum (UnitedHealth Group)",
+            "id": 22,
+            "accepted": true
+          },
+          {
+            "name": "Public Employees Health Program (PEHP)",
+            "id": 23,
+            "accepted": true
+          },
+          {
+            "name": "Select Health",
+            "id": 24,
+            "accepted": true
+          },
+          {
+            "name": "UMR (UHC)",
+            "id": 27,
+            "accepted": true
+          },
+          {
+            "name": "United HealthCare (UHC)",
+            "id": 29,
+            "accepted": true
+          },
+          {
+            "name": "University of Utah Health Plans",
+            "id": 30,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 25,
+            "county_name": "Utah"
+          },
+          {
+            "county_id": 3,
+            "county_name": "Cache"
+          },
+          {
+            "county_id": 12,
+            "county_name": "Juab"
+          },
+          {
+            "county_id": 20,
+            "county_name": "Sanpete"
+          },
+          {
+            "county_id": 27,
+            "county_name": "Washington"
+          }
+        ],
+        "min_age": null,
+        "max_age": null,
+        "waitlist": "no wait list",
+        "telehealth_services": "yes",
+        "spanish_speakers": "contact us",
+        "at_home_services": "yes",
+        "in_clinic_services": "yes",
+        "logo": "https://www.sandstoneautismservices.org/wp-content/uploads/2022/04/Logo1.jpeg",
+        "updated_last": "2024-10-25T20:34:24.243Z",
+        "status": "approved"
+      }
+    },
+    {
+      "id": 628,
+      "type": "provider",
+      "states": [
+        "Pennsylvania"
+      ],
+      "attributes": {
+        "name": "Conestoga Behavioral Services",
+        "provider_type": [
+          {
+            "id": 1,
+            "name": "ABA Therapy"
+          }
+        ],
+        "locations": [
+          {
+            "id": 694,
+            "name": "",
+            "address_1": "",
+            "address_2": "",
+            "city": "",
+            "state": "",
+            "zip": "",
+            "phone": "(717) 478-8614"
+          }
+        ],
+        "website": "https://abaconestoga.com/",
+        "email": "info@abaconestoga.com",
+        "cost": "Contact us",
+        "insurance": [
+          {
+            "name": "Contact us",
+            "id": 1,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 2351,
+            "county_name": "Lancaster"
+          },
+          {
+            "county_id": 2330,
+            "county_name": "Chester"
+          }
+        ],
+        "min_age": 2.0,
+        "max_age": 21.0,
+        "waitlist": "Contact us",
+        "telehealth_services": "Yes",
+        "spanish_speakers": "contact us",
+        "at_home_services": "Yes",
+        "in_clinic_services": "No",
+        "logo": "https://abaconestoga.com/wp-content/uploads/2020/10/Jpeg-high-res-08.png",
+        "updated_last": "2025-01-25T00:25:59.795Z",
+        "status": "approved"
+      }
+    }
+  ]
+}

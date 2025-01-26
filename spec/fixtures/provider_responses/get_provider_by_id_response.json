@@ -1,0 +1,111 @@
+{
+  "data": [
+    {
+      "id": 40,
+      "type": "provider",
+      "states": [
+        "Utah"
+      ],
+      "attributes": {
+        "name": "Kyo Autism Therapy",
+        "provider_type": [
+          {
+            "id": 1,
+            "name": "ABA Therapy"
+          }
+        ],
+        "locations": [
+          {
+            "id": 46,
+            "name": "Orem Clinic",
+            "address_1": "504 West 800 North",
+            "address_2": null,
+            "city": "Orem",
+            "state": "UT",
+            "zip": "84057",
+            "phone": "1-877-264-6747"
+          },
+          {
+            "id": 205,
+            "name": "Murray Clinic",
+            "address_1": "5242 S college drive",
+            "address_2": "Suite 380",
+            "city": "Murray",
+            "state": "UT",
+            "zip": "84123",
+            "phone": ""
+          }
+        ],
+        "website": "https://kyocare.com",
+        "email": "clientservices@kyocare.com",
+        "cost": "Private pay accepted",
+        "insurance": [
+          {
+            "name": "Regence (BCBS)",
+            "id": 6,
+            "accepted": true
+          },
+          {
+            "name": "Select Health",
+            "id": 24,
+            "accepted": true
+          },
+          {
+            "name": "United HealthCare (UHC)",
+            "id": 29,
+            "accepted": true
+          },
+          {
+            "name": "Aetna",
+            "id": 3,
+            "accepted": true
+          },
+          {
+            "name": "Cigna",
+            "id": 9,
+            "accepted": true
+          },
+          {
+            "name": "UMR (UHC)",
+            "id": 27,
+            "accepted": true
+          },
+          {
+            "name": "University of Utah Health Plans",
+            "id": 30,
+            "accepted": true
+          },
+          {
+            "name": "Medicaid",
+            "id": 19,
+            "accepted": true
+          }
+        ],
+        "counties_served": [
+          {
+            "county_id": 6,
+            "county_name": "Davis"
+          },
+          {
+            "county_id": 18,
+            "county_name": "Salt Lake"
+          },
+          {
+            "county_id": 25,
+            "county_name": "Utah"
+          }
+        ],
+        "min_age": 2.0,
+        "max_age": 18.0,
+        "waitlist": "No",
+        "telehealth_services": "Yes",
+        "spanish_speakers": "Yes",
+        "at_home_services": "Yes",
+        "in_clinic_services": "Yes",
+        "logo": "https://res.cloudinary.com/don662dbn/image/upload/fl_preserve_transparency/v1724691619/kyo-aba-logo_oln2cu.jpg?_s=public-apps",
+        "updated_last": "2024-10-18T15:05:58.098Z",
+        "status": "approved"
+      }
+    }
+  ]
+}

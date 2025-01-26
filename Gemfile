@@ -53,6 +53,9 @@ group :development, :test do
   gem "faker"
   gem "simplecov"
   gem 'shoulda-matchers'
+  gem 'rswag'
+  gem 'rswag-api'
+  gem 'rswag-ui'
 end
 
 group :test do

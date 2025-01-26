@@ -1,0 +1,279 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  securitySchemes:
+    bearer_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  "/api/v1/providers":
+    get:
+      summary: list providers
+      tags:
+      - Providers
+      description: Retrieves a list of providers where their status is approved.
+      security: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        type:
+                          type: string
+                        states:
+                          type: array
+                          items:
+                            type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            provider_type:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                            locations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  address_1:
+                                    type: string
+                                  address_2:
+                                    type: string
+                                    nullable: true
+                                  city:
+                                    type: string
+                                  state:
+                                    type: string
+                                  zip:
+                                    type: string
+                                  phone:
+                                    type: string
+                            website:
+                              type: string
+                            email:
+                              type: string
+                            cost:
+                              type: string
+                            insurance:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  accepted:
+                                    type: boolean
+                            counties_served:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  county_id:
+                                    type: integer
+                                  county_name:
+                                    type: string
+                            min_age:
+                              type: number
+                              nullable: true
+                            max_age:
+                              type: number
+                              nullable: true
+                            waitlist:
+                              type: string
+                              nullable: true
+                            telehealth_services:
+                              type: string
+                              nullable: true
+                            spanish_speakers:
+                              type: string
+                              nullable: true
+                            at_home_services:
+                              type: string
+                              nullable: true
+                            in_clinic_services:
+                              type: string
+                              nullable: true
+                            logo:
+                              type: string
+                              nullable: true
+                            updated_last:
+                              type: string
+                              format: date-time
+                            status:
+                              type: string
+  "/api/v1/providers/{id}":
+    get:
+      summary: get provider by ID
+      tags:
+      - Providers
+      description: Retrieves a single provider by their ID. Requires User login with
+        authorization to access that providers info.
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        description: ID of the provider
+        required: true
+        schema:
+          type: integer
+      responses:
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        type:
+                          type: string
+                        states:
+                          type: array
+                          items:
+                            type: string
+                        attributes:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            provider_type:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                            locations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  address_1:
+                                    type: string
+                                  address_2:
+                                    type: string
+                                    nullable: true
+                                  city:
+                                    type: string
+                                  state:
+                                    type: string
+                                  zip:
+                                    type: string
+                                  phone:
+                                    type: string
+                            website:
+                              type: string
+                            email:
+                              type: string
+                            cost:
+                              type: string
+                            insurance:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  accepted:
+                                    type: boolean
+                            counties_served:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  county_id:
+                                    type: integer
+                                  county_name:
+                                    type: string
+                            min_age:
+                              type: number
+                              nullable: true
+                            max_age:
+                              type: number
+                              nullable: true
+                            waitlist:
+                              type: string
+                              nullable: true
+                            telehealth_services:
+                              type: string
+                              nullable: true
+                            spanish_speakers:
+                              type: string
+                              nullable: true
+                            at_home_services:
+                              type: string
+                              nullable: true
+                            in_clinic_services:
+                              type: string
+                              nullable: true
+                            logo:
+                              type: string
+                              nullable: true
+                            updated_last:
+                              type: string
+                              format: date-time
+                            status:
+                              type: string
+servers:
+- url: https://uta-aba-finder-be-97eec9f967d0.herokuapp.com/
+  description: Deployed Server
+  variables:
+    defaultHost:
+      default: www.heroku.com
+- url: http://localhost:3000
+  description: Local Development Server
+security:
+- bearer_auth: []

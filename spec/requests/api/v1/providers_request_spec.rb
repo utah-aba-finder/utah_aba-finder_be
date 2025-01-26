@@ -16,8 +16,6 @@ RSpec.describe "Providers Requests", type: :request do
 
       expect(providers_response).to have_key(:data)
       expect(providers_response[:data]).to be_a(Array)
-      # there are more providers getting added so this is off
-      # expect(providers_response[:data].size).to eq(60)
 
       expect(providers_response[:data][5]).to have_key(:id)
       expect(providers_response[:data][5][:id]).to be_a(Integer)
