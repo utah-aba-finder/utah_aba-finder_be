@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: Autism Service Locator API
   version: v1
 components:
   securitySchemes:
@@ -135,27 +135,19 @@ paths:
       tags:
       - Providers
       description: Retrieves a single provider by their ID. Requires User login with
-        authorization to access that providers info.
+        authorization to access that providers info. Rate limited to 100 requests
+        per minute.
       security:
       - bearer_auth: []
       parameters:
       - name: id
         in: path
         description: ID of the provider
+        example: 40
         required: true
         schema:
           type: integer
       responses:
-        '401':
-          description: unauthorized
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: Unauthorized
         '200':
           description: successful
           content:
@@ -267,6 +259,17 @@ paths:
                               format: date-time
                             status:
                               type: string
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                example:
+                  error: Unauthorized
   "/signup":
     post:
       summary: Registers a new user
