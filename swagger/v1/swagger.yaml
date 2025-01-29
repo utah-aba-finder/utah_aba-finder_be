@@ -278,10 +278,10 @@ paths:
         '200':
           description: User successfully registered
           headers:
-            authorization:
+            Authorization:
               schema:
                 type: string
-              description: JWT to send with future requests to for user auth
+                description: JWT Bearer token for user authorization
           content:
             application/json:
               schema:
@@ -296,6 +296,9 @@ paths:
                       message:
                         type: string
                         example: Signed up successfully.
+                    required:
+                    - code
+                    - message
                   data:
                     type: object
                     properties:
@@ -315,12 +318,168 @@ paths:
                         example: '61'
                       role:
                         type: string
+                        enum:
+                        - super_admin
+                        - provider_admin
                         example: provider_admin
                       created_date:
                         type: string
                         example: 01/01/2025
+                    required:
+                    - id
+                    - email
+                    - created_at
+                    - role
+                required:
+                - status
+                - data
         '422':
-          description: User creation failed due to validation errors
+          description: User registration failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        example: 422
+                      message:
+                        type: string
+                        example: User couldn't be created successfully.
+                    required:
+                    - code
+                    - message
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      format: email
+                      example: user@example.com
+                    password:
+                      type: string
+                      format: password
+                      example: password123
+                      minLength: 6
+                    password_confirmation:
+                      type: string
+                      format: password
+                      example: password123
+                      minLength: 6
+                    provider_id:
+                      type: string
+                      example: '61'
+                  required:
+                  - email
+                  - password
+                  - password_confirmation
+            examples:
+              User registration example:
+                summary: Example parameters for user registration request
+                value:
+                  user:
+                    email: user@example.com
+                    password: password123
+                    password_confirmation: password123
+                    provider_id: 61 (ID Will be currently set to nil by default at
+                      this time)
+        required: true
+  "/login":
+    post:
+      summary: Logs in a user and returns a JWT token
+      tags:
+      - Users
+      security: []
+      parameters: []
+      responses:
+        '200':
+          description: Login successful
+          headers:
+            Authorization:
+              schema:
+                type: string
+              description: JWT token in Bearer format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      code:
+                        type: integer
+                        example: 200
+                      message:
+                        type: string
+                        example: Logged in successfully
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      email:
+                        type: string
+                        format: email
+                        example: test@example.com
+                      created_at:
+                        type: string
+                        format: date-time
+                      provider_id:
+                        type: integer
+                        nullable: true
+                        example: 61
+                      role:
+                        type: string
+                        example: provider_admin
+        '401':
+          description: Invalid login credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: object
+                    properties:
+                      error:
+                        type: string
+                        example: Invalid Email or password.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                      example: test@example.com
+                    password:
+                      type: string
+                      example: password123
+                  required:
+                  - email
+                  - password
+            examples:
+              User login example:
+                summary: Example parameters for user login request
+                value:
+                  user:
+                    email: test@example.com
+                    password: password123
 servers:
 - url: https://uta-aba-finder-be-97eec9f967d0.herokuapp.com/
   description: Deployed Server
