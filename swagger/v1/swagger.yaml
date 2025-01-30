@@ -135,15 +135,14 @@ paths:
       tags:
       - Providers
       description: Retrieves a single provider by their ID. Requires User login with
-        authorization to access that providers info. Rate limited to 100 requests
-        per minute.
+        authorization to access that providers info.
       security:
       - bearer_auth: []
       parameters:
       - name: id
         in: path
         description: ID of the provider
-        example: 40
+        example: 61
         required: true
         schema:
           type: integer
@@ -270,6 +269,126 @@ paths:
                     type: string
                 example:
                   error: Unauthorized
+    patch:
+      summary: update provider
+      tags:
+      - Providers
+      description: Updates an existing provider. Requires User login with authorization
+        to modify provider info.
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID of the provider to update
+        example: 61
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                  - id: 61
+                    type: provider
+                    states:
+                    - Utah
+                    attributes:
+                      name: Example Creation
+                      provider_type:
+                      - id: 1
+                        name: ABA Therapy
+                      locations:
+                      - id: 760
+                        name: testing_grounds
+                        address_1:
+                        address_2:
+                        city:
+                        state:
+                        zip:
+                        phone: 111-111-1111
+                      website: https://www.testing.com
+                      email: info@testing.com
+                      cost: N/A
+                      insurance:
+                      - name: Contact us
+                        id: 1
+                        accepted: true
+                      counties_served:
+                      - county_id: 2
+                        county_name: Box Elder
+                      - county_id: 1
+                        county_name: Beaver
+                      min_age: 2.0
+                      max_age: 16.0
+                      waitlist: 'No'
+                      telehealth_services: 'Yes'
+                      spanish_speakers: 'Yes'
+                      at_home_services:
+                      in_clinic_services:
+                      logo: example_logo@logo.com
+                      updated_last: '2025-01-29T22:34:46.947Z'
+                      status: pending
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              example:
+                data:
+                - id: 61
+                  type: provider
+                  states:
+                  - Utah
+                  attributes:
+                    name: Example Creation
+                    provider_type:
+                    - id: 1
+                      name: ABA Therapy
+                    locations:
+                    - id: 760
+                      name: testing_grounds
+                      address_1:
+                      address_2:
+                      city:
+                      state:
+                      zip:
+                      phone: 111-111-1111
+                    website: https://www.testing.com
+                    email: info@testing.com
+                    cost: N/A
+                    insurance:
+                    - name: Contact us
+                      id: 1
+                      accepted: true
+                    counties_served:
+                    - county_id: 2
+                      county_name: Box Elder
+                    - county_id: 1
+                      county_name: Beaver
+                    min_age: 2.0
+                    max_age: 16.0
+                    waitlist: 'No'
+                    telehealth_services: 'Yes'
+                    spanish_speakers: 'Yes'
+                    at_home_services:
+                    in_clinic_services:
+                    logo: example_logo@logo.com
+                    updated_last: '2025-01-29T22:34:46.947Z'
+                    status: pending
   "/signup":
     post:
       summary: Registers a new user
