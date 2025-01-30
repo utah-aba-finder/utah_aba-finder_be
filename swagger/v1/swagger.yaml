@@ -10,6 +10,164 @@ components:
       scheme: bearer
       bearerFormat: JWT
 paths:
+  "/api/v1/admin/insurances":
+    post:
+      summary: create insurance
+      tags:
+      - Admin Insurances
+      description: Creates a new insurance. Requires super_admin role.
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                  - id: 999
+                    type: insurance
+                    attributes:
+                      name: Example Insurance Provider
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Example Insurance Provider
+                        required:
+                        - name
+  "/api/v1/admin/insurances/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      description: ID of the insurance
+      schema:
+        type: integer
+    patch:
+      summary: update insurance
+      tags:
+      - Admin Insurances
+      description: Updates an existing insurance. Requires super_admin role.
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                  - id: 999
+                    type: insurance
+                    attributes:
+                      name: Example Insurance Provider
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 999
+                      type:
+                        type: string
+                      attributes:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            example: Example Insurance Provider
+                        required:
+                        - name
+    delete:
+      summary: delete insurance
+      tags:
+      - Admin Insurances
+      description: Deletes an insurance. Requires super_admin role.
+      security:
+      - bearer_auth: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        example: 999
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                example:
+                  message: Insurance 'Example Insurance Provider' successfully deleted
+        '401':
+          description: unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
   "/api/v1/admin/providers":
     get:
       summary: list all providers

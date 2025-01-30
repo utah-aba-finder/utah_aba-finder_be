@@ -1,0 +1,11 @@
+{
+  "data": [
+      {
+          "id": 999,
+          "type": "insurance",
+          "attributes": {
+              "name": "Example Insurance Provider"
+          }
+      }
+  ]
+}
