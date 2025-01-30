@@ -784,6 +784,179 @@ paths:
                     logo: example_logo@logo.com
                     updated_last: '2025-01-29T22:34:46.947Z'
                     status: pending
+  "/api/v1/states/{state_id}/counties":
+    get:
+      summary: list counties
+      tags:
+      - Counties
+      description: Retrieves a list of counties for a specific state.
+      security: []
+      parameters:
+      - name: state_id
+        in: path
+        required: true
+        description: ID of the state
+        example: 1
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                example:
+                  data:
+                  - id: 1
+                    type: County
+                    attributes:
+                      name: Beaver
+                      state: Utah
+                  - id: 2
+                    type: County
+                    attributes:
+                      name: Box Elder
+                      state: Utah
+                  - id: 3
+                    type: County
+                    attributes:
+                      name: Cache
+                      state: Utah
+                  - id: 4
+                    type: County
+                    attributes:
+                      name: Carbon
+                      state: Utah
+                  - id: 5
+                    type: County
+                    attributes:
+                      name: Daggett
+                      state: Utah
+                  - id: 6
+                    type: County
+                    attributes:
+                      name: Davis
+                      state: Utah
+                  - id: 7
+                    type: County
+                    attributes:
+                      name: Duchesne
+                      state: Utah
+                  - id: 8
+                    type: County
+                    attributes:
+                      name: Emery
+                      state: Utah
+                  - id: 9
+                    type: County
+                    attributes:
+                      name: Garfield
+                      state: Utah
+                  - id: 10
+                    type: County
+                    attributes:
+                      name: Grand
+                      state: Utah
+                  - id: 11
+                    type: County
+                    attributes:
+                      name: Iron
+                      state: Utah
+                  - id: 12
+                    type: County
+                    attributes:
+                      name: Juab
+                      state: Utah
+                  - id: 13
+                    type: County
+                    attributes:
+                      name: Kane
+                      state: Utah
+                  - id: 14
+                    type: County
+                    attributes:
+                      name: Millard
+                      state: Utah
+                  - id: 15
+                    type: County
+                    attributes:
+                      name: Morgan
+                      state: Utah
+                  - id: 16
+                    type: County
+                    attributes:
+                      name: Piute
+                      state: Utah
+                  - id: 17
+                    type: County
+                    attributes:
+                      name: Rich
+                      state: Utah
+                  - id: 18
+                    type: County
+                    attributes:
+                      name: Salt Lake
+                      state: Utah
+                  - id: 19
+                    type: County
+                    attributes:
+                      name: San Juan
+                      state: Utah
+                  - id: 20
+                    type: County
+                    attributes:
+                      name: Sanpete
+                      state: Utah
+                  - id: 21
+                    type: County
+                    attributes:
+                      name: Sevier
+                      state: Utah
+                  - id: 22
+                    type: County
+                    attributes:
+                      name: Summit
+                      state: Utah
+                  - id: 23
+                    type: County
+                    attributes:
+                      name: Tooele
+                      state: Utah
+                  - id: 24
+                    type: County
+                    attributes:
+                      name: Uintah
+                      state: Utah
+                  - id: 25
+                    type: County
+                    attributes:
+                      name: Utah
+                      state: Utah
+                  - id: 26
+                    type: County
+                    attributes:
+                      name: Wasatch
+                      state: Utah
+                  - id: 27
+                    type: County
+                    attributes:
+                      name: Washington
+                      state: Utah
+                  - id: 28
+                    type: County
+                    attributes:
+                      name: Wayne
+                      state: Utah
+                  - id: 29
+                    type: County
+                    attributes:
+                      name: Weber
+                      state: Utah
+                  - id: 30
+                    type: County
+                    attributes:
+                      name: Contact Us
+                      state: Utah
   "/api/v1/states":
     get:
       summary: list states
