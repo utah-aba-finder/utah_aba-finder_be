@@ -5675,6 +5675,53 @@ paths:
                   user:
                     email: test@example.com
                     password: password123
+  "/logout":
+    delete:
+      summary: Logs out a user and invalidates their JWT token
+      tags:
+      - Users
+      security:
+      - Bearer: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        description: JWT token in Bearer format
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: logged out successfully
+                required:
+                - status
+                - message
+        '401':
+          description: No active session found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    example: 401
+                  message:
+                    type: string
+                    example: Couldn't find an active session.
+                required:
+                - status
+                - message
 servers:
 - url: https://uta-aba-finder-be-97eec9f967d0.herokuapp.com/
   description: Deployed Server

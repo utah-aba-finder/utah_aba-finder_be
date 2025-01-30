@@ -309,4 +309,73 @@ RSpec.describe 'User API', type: :request do
       end
     end
   end
+
+  path '/logout' do
+    delete 'Logs out a user and invalidates their JWT token' do
+      tags 'Users'
+      produces 'application/json'
+      security [Bearer: []]
+
+      parameter name: 'Authorization', in: :header, type: :string, 
+        required: true, description: 'JWT token in Bearer format'
+
+      response '200', 'Logout successful' do
+        schema type: :object,
+          properties: {
+            status: { type: :integer, example: 200 },
+            message: { type: :string, example: 'logged out successfully' }
+          },
+          required: ['status', 'message']
+
+        let(:user_password) { 'password123' }
+        let!(:user) do
+          User.create!(
+            email: 'test@example.com',
+            password: user_password,
+            password_confirmation: user_password,
+            role: 'provider_admin'
+          )
+        end
+
+        let(:login_params) do
+          {
+            user: {
+              email: user.email,
+              password: user_password
+            }
+          }
+        end
+
+        let(:Authorization) do
+          post '/login', params: login_params.to_json, headers: { 'CONTENT_TYPE' => 'application/json' }
+          response.headers['Authorization']
+        end
+
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(response).to have_http_status(:ok)
+          expect(data['status']).to eq(200)
+          expect(data['message']).to eq('logged out successfully')
+        end
+      end
+
+      response '401', 'No active session found' do
+        schema type: :object,
+          properties: {
+            status: { type: :integer, example: 401 },
+            message: { type: :string, example: "Couldn't find an active session." }
+          },
+          required: ['status', 'message']
+
+        let(:Authorization) { '' }
+
+        run_test! do |response|
+          data = JSON.parse(response.body)
+          expect(response).to have_http_status(:unauthorized)
+          expect(data['status']).to eq(401)
+          expect(data['message']).to eq("Couldn't find an active session.")
+        end
+      end
+    end
+  end
 end
