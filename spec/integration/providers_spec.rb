@@ -46,12 +46,12 @@ RSpec.describe 'Providers API', type: :request do
         headers: { 'Content-Type' => 'application/json' }
       )
 
-      stub_request(:patch, "https://utah-aba-finder-api-c9d143f02ce8.herokuapp.com/api/v1/providers/999")
-      .to_return(
-        status: 404,
-        body: { error: 'Provider not found' }.to_json,
-        headers: { 'Content-Type' => 'application/json' }
-      )
+    stub_request(:patch, "https://utah-aba-finder-api-c9d143f02ce8.herokuapp.com/api/v1/providers/999")
+    .to_return(
+      status: 404,
+      body: { error: 'Provider not found' }.to_json,
+      headers: { 'Content-Type' => 'application/json' }
+    )
 
     stub_request(:get, "https://utah-aba-finder-api-c9d143f02ce8.herokuapp.com/api/v1/providers")
       .with(headers: { 'Authorization' => 'Bearer invalid_token' })
@@ -153,6 +153,8 @@ RSpec.describe 'Providers API', type: :request do
             }
           }
         }
+
+        schema example: JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'provider_responses', 'get_all_providers_response.json')))
 
         run_test! do |response|
           expect(response.body).to include('Kyo Autism Therapy')
@@ -293,7 +295,6 @@ RSpec.describe 'Providers API', type: :request do
       # save for later. need to create error handling for provider not found
       # response(404, 'provider not found') do
       #   let(:id) { 9999 }
-        
       #   schema type: :object,
       #          properties: {
       #            error: { type: :string }
@@ -488,7 +489,6 @@ RSpec.describe 'Providers API', type: :request do
         run_test! do |response|
           expect(response.status).to eq(401)
           expect(JSON.parse(response.body)).to eq({ "error" => "Unauthorized" })
-          # binding.pry
         end
       end
 
