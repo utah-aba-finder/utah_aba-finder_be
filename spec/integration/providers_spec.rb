@@ -503,17 +503,6 @@ RSpec.describe 'Providers API', type: :request do
         
       #   run_test!
       # end
-
-      # response(422, 'invalid request') do
-      #   let(:provider) { { data: [{ invalid: 'data' }] } }
-        
-      #   schema type: :object,
-      #         properties: {
-      #           error: { type: :string }
-      #         }
-        
-      #   run_test!
-      # end
     end
   end
 end
