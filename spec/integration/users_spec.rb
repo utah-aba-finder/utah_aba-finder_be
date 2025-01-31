@@ -343,9 +343,20 @@ RSpec.describe 'User API', type: :request do
           }
         end
 
+        # let(:Authorization) do
+        #   post '/login', params: login_params.to_json, headers: { 'CONTENT_TYPE' => 'application/json' }
+        #   response.headers['Authorization']
+        # end
+
         let(:Authorization) do
-          post '/login', params: login_params.to_json, headers: { 'CONTENT_TYPE' => 'application/json' }
+          post '/login', 
+            params: { user: { email: user.email, password: user_password } }.to_json,
+            headers: { 'CONTENT_TYPE' => 'application/json' }
           response.headers['Authorization']
+        end
+
+        before do
+          allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         end
 
         run_test! do |response|
