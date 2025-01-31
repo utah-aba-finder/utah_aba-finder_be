@@ -19,14 +19,22 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'Autism Service Locator API',
-        version: 'v1'
+        version: 'v1',
+        description: 'API Documentation with built-in test mode for write operations'
       },
       components: {
         securitySchemes: {
           bearer_auth: {
             type: :http,
             scheme: :bearer,
-            bearerFormat: :JWT
+            bearerFormat: :JWT,
+            description: 'To get an authentication token:
+1. Create a User: POST /api/v1/users
+2. Or login: POST /api/v1/users/sign_in
+3. Copy the token from the Authorization header in the response
+4. Click "Authorize" above and paste your token
+
+Note: Do not include "Bearer" - it will be added automatically'
           }
         }
       },
@@ -34,18 +42,12 @@ RSpec.configure do |config|
       servers: [
         {
           url: 'https://uta-aba-finder-be-97eec9f967d0.herokuapp.com/',
-          description: 'Deployed Server',
-          variables: {
-            defaultHost: {
-              default: 'www.heroku.com'
-            }
-          }
+          description: 'Production Server (Write operations are protected)'
         },
         {
           url: 'http://localhost:3000',
-          description: 'Local Development Server' 
+          description: 'Local Development Server'
         }
-  
       ],
       security: [
         { bearer_auth: [] }

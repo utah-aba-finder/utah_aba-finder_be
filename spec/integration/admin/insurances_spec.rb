@@ -81,7 +81,6 @@ RSpec.describe 'Admin Insurances API', type: :request do
       description 'Creates a new insurance. Requires super_admin role.'
       security [bearer_auth: []]
 
-      parameter name: 'Authorization', in: :header, type: :string, required: true
       
       parameter name: :insurance, in: :body, schema: {
         type: :object,
@@ -185,7 +184,6 @@ RSpec.describe 'Admin Insurances API', type: :request do
       description 'Updates an existing insurance. Requires super_admin role.'
       security [bearer_auth: []]
 
-      parameter name: 'Authorization', in: :header, type: :string, required: true
       
       parameter name: :insurance, in: :body, schema: {
         type: :object,
@@ -285,9 +283,6 @@ RSpec.describe 'Admin Insurances API', type: :request do
       produces 'application/json'
       description 'Deletes an insurance. Requires super_admin role.'
       security [bearer_auth: []]
-
-      parameter name: 'Authorization', in: :header, type: :string, required: true,
-                example: 999
 
       response(200, 'successful') do
         schema type: :object,

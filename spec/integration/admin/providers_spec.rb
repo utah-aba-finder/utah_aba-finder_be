@@ -68,8 +68,6 @@ RSpec.describe 'Admin Providers API', type: :request do
       description 'Retrieves a list of all providers regardless of status. Requires super_admin role.'
       security [bearer_auth: []]
 
-      parameter name: 'Authorization', in: :header, type: :string, required: true
-
       response(200, 'successful') do
         schema type: :object, properties: {
             data: {
@@ -187,8 +185,6 @@ RSpec.describe 'Admin Providers API', type: :request do
       produces 'application/json'
       description 'Creates a new provider. Requires super_admin role.'
       security [bearer_auth: []]
-
-      parameter name: 'Authorization', in: :header, type: :string, required: true
       
       parameter name: :provider, in: :body, schema: {
         type: :object,

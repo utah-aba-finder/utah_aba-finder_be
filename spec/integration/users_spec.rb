@@ -316,9 +316,6 @@ RSpec.describe 'User API', type: :request do
       produces 'application/json'
       security [Bearer: []]
 
-      parameter name: 'Authorization', in: :header, type: :string, 
-        required: true, description: 'JWT token in Bearer format'
-
       response '200', 'Logout successful' do
         schema type: :object,
           properties: {
