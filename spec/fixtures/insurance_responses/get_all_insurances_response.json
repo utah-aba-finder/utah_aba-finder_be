@@ -1,0 +1,669 @@
+{
+  "data": [
+      {
+          "id": 1,
+          "type": "insurance",
+          "attributes": {
+              "name": "Contact us"
+          }
+      },
+      {
+          "id": 2,
+          "type": "insurance",
+          "attributes": {
+              "name": "Administrator Benefits"
+          }
+      },
+      {
+          "id": 3,
+          "type": "insurance",
+          "attributes": {
+              "name": "Aetna"
+          }
+      },
+      {
+          "id": 4,
+          "type": "insurance",
+          "attributes": {
+              "name": "Meritain (Aetna)"
+          }
+      },
+      {
+          "id": 5,
+          "type": "insurance",
+          "attributes": {
+              "name": "Anthem (BCBS)"
+          }
+      },
+      {
+          "id": 6,
+          "type": "insurance",
+          "attributes": {
+              "name": "Regence (BCBS)"
+          }
+      },
+      {
+          "id": 7,
+          "type": "insurance",
+          "attributes": {
+              "name": "Beacon Health"
+          }
+      },
+      {
+          "id": 8,
+          "type": "insurance",
+          "attributes": {
+              "name": "Blue Cross Blue Shield (BCBS)"
+          }
+      },
+      {
+          "id": 9,
+          "type": "insurance",
+          "attributes": {
+              "name": "Cigna"
+          }
+      },
+      {
+          "id": 10,
+          "type": "insurance",
+          "attributes": {
+              "name": "Compsych"
+          }
+      },
+      {
+          "id": 11,
+          "type": "insurance",
+          "attributes": {
+              "name": "Deseret Mutual Benefit Administrators (DMBA)"
+          }
+      },
+      {
+          "id": 12,
+          "type": "insurance",
+          "attributes": {
+              "name": "EMI Health"
+          }
+      },
+      {
+          "id": 13,
+          "type": "insurance",
+          "attributes": {
+              "name": "Evernorth (Cigna)"
+          }
+      },
+      {
+          "id": 15,
+          "type": "insurance",
+          "attributes": {
+              "name": "Health Choice Utah"
+          }
+      },
+      {
+          "id": 16,
+          "type": "insurance",
+          "attributes": {
+              "name": "Healthy U Medicaid (University of Utah Health Plans)"
+          }
+      },
+      {
+          "id": 18,
+          "type": "insurance",
+          "attributes": {
+              "name": "Magellan"
+          }
+      },
+      {
+          "id": 19,
+          "type": "insurance",
+          "attributes": {
+              "name": "Medicaid"
+          }
+      },
+      {
+          "id": 20,
+          "type": "insurance",
+          "attributes": {
+              "name": "Molina"
+          }
+      },
+      {
+          "id": 21,
+          "type": "insurance",
+          "attributes": {
+              "name": "MotivHealth"
+          }
+      },
+      {
+          "id": 22,
+          "type": "insurance",
+          "attributes": {
+              "name": "Optum (UnitedHealth Group)"
+          }
+      },
+      {
+          "id": 24,
+          "type": "insurance",
+          "attributes": {
+              "name": "Select Health"
+          }
+      },
+      {
+          "id": 25,
+          "type": "insurance",
+          "attributes": {
+              "name": "Tall Tree"
+          }
+      },
+      {
+          "id": 26,
+          "type": "insurance",
+          "attributes": {
+              "name": "TRICARE"
+          }
+      },
+      {
+          "id": 27,
+          "type": "insurance",
+          "attributes": {
+              "name": "UMR (UHC)"
+          }
+      },
+      {
+          "id": 28,
+          "type": "insurance",
+          "attributes": {
+              "name": "United Behavioral Health (UBH)"
+          }
+      },
+      {
+          "id": 29,
+          "type": "insurance",
+          "attributes": {
+              "name": "United HealthCare (UHC)"
+          }
+      },
+      {
+          "id": 30,
+          "type": "insurance",
+          "attributes": {
+              "name": "University of Utah Health Plans"
+          }
+      },
+      {
+          "id": 31,
+          "type": "insurance",
+          "attributes": {
+              "name": "Utah’s Children’s Health Insurance Program (CHIP)"
+          }
+      },
+      {
+          "id": 32,
+          "type": "insurance",
+          "attributes": {
+              "name": "Utah Services for People with Disabilities (DSPD)"
+          }
+      },
+      {
+          "id": 33,
+          "type": "insurance",
+          "attributes": {
+              "name": "Wise Imagine"
+          }
+      },
+      {
+          "id": 184,
+          "type": "insurance",
+          "attributes": {
+              "name": "Keystone Health Plan East"
+          }
+      },
+      {
+          "id": 36,
+          "type": "insurance",
+          "attributes": {
+              "name": "Medicare"
+          }
+      },
+      {
+          "id": 14,
+          "type": "insurance",
+          "attributes": {
+              "name": "Flexible Spending Account (FSA)"
+          }
+      },
+      {
+          "id": 17,
+          "type": "insurance",
+          "attributes": {
+              "name": "Health Savings Account (HSA)"
+          }
+      },
+      {
+          "id": 23,
+          "type": "insurance",
+          "attributes": {
+              "name": "Public Employees Health Program (PEHP)"
+          }
+      },
+      {
+          "id": 37,
+          "type": "insurance",
+          "attributes": {
+              "name": "UnitedHealth Group"
+          }
+      },
+      {
+          "id": 40,
+          "type": "insurance",
+          "attributes": {
+              "name": "Horizon (BCBS)"
+          }
+      },
+      {
+          "id": 41,
+          "type": "insurance",
+          "attributes": {
+              "name": "Private Pay Only"
+          }
+      },
+      {
+          "id": 42,
+          "type": "insurance",
+          "attributes": {
+              "name": "Amerigroup"
+          }
+      },
+      {
+          "id": 43,
+          "type": "insurance",
+          "attributes": {
+              "name": "Arizona Health Care Cost Containment System (AHCCS)"
+          }
+      },
+      {
+          "id": 67,
+          "type": "insurance",
+          "attributes": {
+              "name": "Health Plan of Nevada"
+          }
+      },
+      {
+          "id": 68,
+          "type": "insurance",
+          "attributes": {
+              "name": "Silver Summit Health Plan"
+          }
+      },
+      {
+          "id": 69,
+          "type": "insurance",
+          "attributes": {
+              "name": "Sierra Health and Life (A UnitedHealthcare Company)"
+          }
+      },
+      {
+          "id": 70,
+          "type": "insurance",
+          "attributes": {
+              "name": "MVP Health Care"
+          }
+      },
+      {
+          "id": 100,
+          "type": "insurance",
+          "attributes": {
+              "name": "New Hampshire Department of Health & Human Services (DHHS)"
+          }
+      },
+      {
+          "id": 101,
+          "type": "insurance",
+          "attributes": {
+              "name": "NJ Family Care"
+          }
+      },
+      {
+          "id": 102,
+          "type": "insurance",
+          "attributes": {
+              "name": "Capital District Physicians' Health Plan (CDPHP)"
+          }
+      },
+      {
+          "id": 103,
+          "type": "insurance",
+          "attributes": {
+              "name": "Carelon"
+          }
+      },
+      {
+          "id": 104,
+          "type": "insurance",
+          "attributes": {
+              "name": "Ambetter"
+          }
+      },
+      {
+          "id": 105,
+          "type": "insurance",
+          "attributes": {
+              "name": "NC Medicaid Division of Health Benefits (NCDHHS)"
+          }
+      },
+      {
+          "id": 106,
+          "type": "insurance",
+          "attributes": {
+              "name": "Buckeye Health Plan"
+          }
+      },
+      {
+          "id": 107,
+          "type": "insurance",
+          "attributes": {
+              "name": "Medical Mutual of Ohio"
+          }
+      },
+      {
+          "id": 108,
+          "type": "insurance",
+          "attributes": {
+              "name": "Sooner Care"
+          }
+      },
+      {
+          "id": 109,
+          "type": "insurance",
+          "attributes": {
+              "name": "Health First"
+          }
+      },
+      {
+          "id": 110,
+          "type": "insurance",
+          "attributes": {
+              "name": "Bright Healthcare"
+          }
+      },
+      {
+          "id": 111,
+          "type": "insurance",
+          "attributes": {
+              "name": "Kaiser Permanente"
+          }
+      },
+      {
+          "id": 112,
+          "type": "insurance",
+          "attributes": {
+              "name": "CardinalCare"
+          }
+      },
+      {
+          "id": 113,
+          "type": "insurance",
+          "attributes": {
+              "name": "CareFirst"
+          }
+      },
+      {
+          "id": 114,
+          "type": "insurance",
+          "attributes": {
+              "name": "AvMed"
+          }
+      },
+      {
+          "id": 115,
+          "type": "insurance",
+          "attributes": {
+              "name": "Oscar"
+          }
+      },
+      {
+          "id": 116,
+          "type": "insurance",
+          "attributes": {
+              "name": "Nebraska total care"
+          }
+      },
+      {
+          "id": 117,
+          "type": "insurance",
+          "attributes": {
+              "name": "Priority Partners"
+          }
+      },
+      {
+          "id": 118,
+          "type": "insurance",
+          "attributes": {
+              "name": "Maryland Department of Health"
+          }
+      },
+      {
+          "id": 119,
+          "type": "insurance",
+          "attributes": {
+              "name": "Wellpoint"
+          }
+      },
+      {
+          "id": 120,
+          "type": "insurance",
+          "attributes": {
+              "name": "Delaware Health and Social Services (DHSS)"
+          }
+      },
+      {
+          "id": 121,
+          "type": "insurance",
+          "attributes": {
+              "name": "Humana"
+          }
+      },
+      {
+          "id": 133,
+          "type": "insurance",
+          "attributes": {
+              "name": "MDwise"
+          }
+      },
+      {
+          "id": 134,
+          "type": "insurance",
+          "attributes": {
+              "name": "Managed Health Insurance (MHS)"
+          }
+      },
+      {
+          "id": 166,
+          "type": "insurance",
+          "attributes": {
+              "name": "Highmark"
+          }
+      },
+      {
+          "id": 167,
+          "type": "insurance",
+          "attributes": {
+              "name": "Capital"
+          }
+      },
+      {
+          "id": 168,
+          "type": "insurance",
+          "attributes": {
+              "name": "Quest Behavioral Health"
+          }
+      },
+      {
+          "id": 192,
+          "type": "insurance",
+          "attributes": {
+              "name": "Community Health Network"
+          }
+      },
+      {
+          "id": 170,
+          "type": "insurance",
+          "attributes": {
+              "name": "PerformCare"
+          }
+      },
+      {
+          "id": 171,
+          "type": "insurance",
+          "attributes": {
+              "name": "Aetna Behavioral Health of PA"
+          }
+      },
+      {
+          "id": 172,
+          "type": "insurance",
+          "attributes": {
+              "name": "Amerihealth Administrators"
+          }
+      },
+      {
+          "id": 173,
+          "type": "insurance",
+          "attributes": {
+              "name": "Amerihealth HMO"
+          }
+      },
+      {
+          "id": 174,
+          "type": "insurance",
+          "attributes": {
+              "name": "Amerihealth PPO"
+          }
+      },
+      {
+          "id": 175,
+          "type": "insurance",
+          "attributes": {
+              "name": "Capitol Blue Cross"
+          }
+      },
+      {
+          "id": 176,
+          "type": "insurance",
+          "attributes": {
+              "name": "CHIP: UPMC for Kids"
+          }
+      },
+      {
+          "id": 177,
+          "type": "insurance",
+          "attributes": {
+              "name": "CHIP: Capitol Blue Cross"
+          }
+      },
+      {
+          "id": 178,
+          "type": "insurance",
+          "attributes": {
+              "name": "CHIP: Keystone Health Plan East"
+          }
+      },
+      {
+          "id": 179,
+          "type": "insurance",
+          "attributes": {
+              "name": "Cigna Behavioral Health of PA"
+          }
+      },
+      {
+          "id": 180,
+          "type": "insurance",
+          "attributes": {
+              "name": "Community Behavioral Health"
+          }
+      },
+      {
+          "id": 169,
+          "type": "insurance",
+          "attributes": {
+              "name": "Community Care Behavioral Health"
+          }
+      },
+      {
+          "id": 181,
+          "type": "insurance",
+          "attributes": {
+              "name": "Empire (BCBS)"
+          }
+      },
+      {
+          "id": 182,
+          "type": "insurance",
+          "attributes": {
+              "name": "Independence Administrators"
+          }
+      },
+      {
+          "id": 183,
+          "type": "insurance",
+          "attributes": {
+              "name": "Independence Blue Cross"
+          }
+      },
+      {
+          "id": 185,
+          "type": "insurance",
+          "attributes": {
+              "name": "Magellan Behavioral Health of PA"
+          }
+      },
+      {
+          "id": 186,
+          "type": "insurance",
+          "attributes": {
+              "name": "MHC"
+          }
+      },
+      {
+          "id": 187,
+          "type": "insurance",
+          "attributes": {
+              "name": "Optum Behavioral Health"
+          }
+      },
+      {
+          "id": 188,
+          "type": "insurance",
+          "attributes": {
+              "name": "University of Pittsburgh Medical Center (UPMC)"
+          }
+      },
+      {
+          "id": 189,
+          "type": "insurance",
+          "attributes": {
+              "name": "CareSource"
+          }
+      },
+      {
+          "id": 190,
+          "type": "insurance",
+          "attributes": {
+              "name": "Peach State Health Plan"
+          }
+      },
+      {
+          "id": 191,
+          "type": "insurance",
+          "attributes": {
+              "name": "WellCare"
+          }
+      },
+      {
+          "id": 193,
+          "type": "insurance",
+          "attributes": {
+              "name": "Ascension"
+          }
+      }
+  ]
+}

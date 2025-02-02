@@ -1,0 +1,49 @@
+{
+  "data": [{
+    "id": 61,
+    "type": "provider",
+    "states": ["Utah"],
+    "attributes": {
+      "name": "Example Creation",
+      "provider_type": [{
+        "id": 1,
+        "name": "ABA Therapy"
+      }],
+      "locations": [{
+        "id": 760,
+        "name": "testing_grounds",
+        "address_1": null,
+        "address_2": null,
+        "city": null,
+        "state": null,
+        "zip": null,
+        "phone": "111-111-1111"
+      }],
+      "website": "https://www.testing.com",
+      "email": "info@testing.com",
+      "cost": "N/A",
+      "insurance": [{
+        "name": "Contact us",
+        "id": 1,
+        "accepted": true
+      }],
+      "counties_served": [{
+        "county_id": 2,
+        "county_name": "Box Elder"
+      }, {
+        "county_id": 1,
+        "county_name": "Beaver"
+      }],
+      "min_age": 2.0,
+      "max_age": 16.0,
+      "waitlist": "No",
+      "telehealth_services": "Yes",
+      "spanish_speakers": "Yes",
+      "at_home_services": null,
+      "in_clinic_services": null,
+      "logo": "example_logo@logo.com",
+      "updated_last": "2025-01-29T22:34:46.947Z",
+      "status": "pending"
+    }
+  }]
+}
