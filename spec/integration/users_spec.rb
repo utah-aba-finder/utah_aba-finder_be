@@ -17,7 +17,8 @@ RSpec.describe 'User API', type: :request do
               email: { type: :string, format: :email, example: 'user@example.com' },
               password: { type: :string, format: :password, example: 'password123', minLength: 6 },
               password_confirmation: { type: :string, format: :password, example: 'password123', minLength: 6 },
-              provider_id: { type: :string, example: '61' }
+              provider_id: { type: :string, example: '61' },
+              role: { type: :string, example: 'provider_admin' }
             },
             required: ['email', 'password', 'password_confirmation']
           }
@@ -30,7 +31,8 @@ RSpec.describe 'User API', type: :request do
           password: 'password123',
           password_confirmation: 'password123',
           # refactor this when id assignment is updated
-          provider_id: '61 (ID Will be currently set to nil by default at this time)'
+          provider_id: '61',
+          role: 'provider_admin (role is set to provider_admin by default if not specified, current roles are provider_admin and super_admin)'
         }
       }, name: 'User registration example', summary: 'Example parameters for user registration request'
 
@@ -56,7 +58,7 @@ RSpec.describe 'User API', type: :request do
                 id: { type: :integer, example: 1 },
                 email: { type: :string, format: :email, example: 'user@example.com' },
                 created_at: { type: :string, format: 'date-time' },
-                provider_id: { type: :string, nullable: true, example: '61' },
+                provider_id: { type: :integer, nullable: true, example: 61 },
                 role: { type: :string, enum: ['super_admin', 'provider_admin'], example: 'provider_admin' },
                 created_date: { type: :string, example: '01/01/2025' }
               },
@@ -90,7 +92,7 @@ RSpec.describe 'User API', type: :request do
           expect(data['data']['id']).to be_an(Integer)
           expect(data['data']['created_at']).to be_present
           expect(data['data']['created_date']).to be_present
-          expect(data['data']['provider_id']).to be_nil
+          expect(data['data']['provider_id']).to be_present
           expect(response.headers['Authorization']).to be_present
           expect(response.headers['Authorization']).to match(/^Bearer .+/)
         end
@@ -110,13 +112,13 @@ RSpec.describe 'User API', type: :request do
         }
 
         context 'with empty parameters' do
-          let(:user) { { user: { email: '', password: '', password_confirmation: '' } } }
+          let(:user) { { user: { email: '', password: '', password_confirmation: '', provider_id: '' } } }
 
           run_test! do |response|
             data = JSON.parse(response.body)
             expect(response).to have_http_status(:unprocessable_entity)
             expect(data['status']['code']).to eq(422)
-            expect(data['status']['message']).to include("User couldn't be created successfully. Email can't be blank and Password can't be blank")
+            expect(data['status']['message']).to include("User couldn't be created successfully. Email can't be blank, Password can't be blank, and Provider can't be blank")
           end
         end
 
@@ -330,6 +332,7 @@ RSpec.describe 'User API', type: :request do
             email: 'test@example.com',
             password: user_password,
             password_confirmation: user_password,
+            provider_id: 61,
             role: 'provider_admin'
           )
         end

@@ -12,8 +12,7 @@ class ApplicationController < ActionController::API
 
   def handle_swagger_request
     # Check if this is a request from Swagger UI
-    return unless request.headers['Origin']&.include?('swagger') || 
-                  request.headers['Referer']&.include?('swagger')
+    return unless from_swagger_ui?
 
     # Only intercept write operations
     if ['POST', 'PUT', 'PATCH', 'DELETE'].include?(request.method_symbol.to_s.upcase)
@@ -28,6 +27,13 @@ class ApplicationController < ActionController::API
         }
       }, status: :ok
     end
+  end
+
+  def from_swagger_ui?
+    return true if request.headers['Referer']&.include?('api-docs') ||
+                   request.headers['Referer']&.include?('swagger') ||
+                   request.headers['Origin']&.include?('api-docs') ||
+                   request.headers['Origin']&.include?('swagger')
   end
 
   def filtered_params
