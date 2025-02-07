@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::API
   before_action :handle_swagger_request
+  rescue_from ArgumentError, with: :handle_argument_error
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:provider_id, :role])
+  end
 
   private
 
@@ -32,5 +39,16 @@ class ApplicationController < ActionController::API
       'token', 
       'api_key'
     )
+  end
+
+  # error handling 
+  def handle_argument_error(exception)
+    render json: {
+      status: {
+        code: 422,
+        message: "Invalid argument provided",
+        errors: [exception.message]
+      }
+    }, status: :unprocessable_entity
   end
 end
