@@ -28,13 +28,14 @@ RSpec.configure do |config|
             type: :http,
             scheme: :bearer,
             bearerFormat: :JWT,
-            description: 'To get an authentication token:
-1. Create a User: POST /api/v1/users
-2. Or login: POST /api/v1/users/sign_in
-3. Copy the token from the Authorization header in the response
-4. Click "Authorize" above and paste your token
+            description: 'Authorization is currently on hold until a sandbox environment can be create to protect current database.'
+#             description: 'To get an authentication token:
+# 1. Create a User: POST /api/v1/users
+# 2. Or login: POST /api/v1/users/sign_in
+# 3. Copy the token from the Authorization header in the response
+# 4. Click "Authorize" above and paste your token
 
-Note: Do not include "Bearer" - it will be added automatically'
+# Note: Do not include "Bearer" - it will be added automatically'
           }
         }
       },

@@ -10,14 +10,8 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: |-
-        To get an authentication token:
-        1. Create a User: POST /api/v1/users
-        2. Or login: POST /api/v1/users/sign_in
-        3. Copy the token from the Authorization header in the response
-        4. Click "Authorize" above and paste your token
-
-        Note: Do not include "Bearer" - it will be added automatically
+      description: Authorization is currently on hold until a sandbox environment
+        can be create to protect current database.
 paths:
   "/api/v1/admin/insurances":
     post:
@@ -23565,9 +23559,9 @@ paths:
                         type: string
                         format: date-time
                       provider_id:
-                        type: string
+                        type: integer
                         nullable: true
-                        example: '61'
+                        example: 61
                       role:
                         type: string
                         enum:
@@ -23630,6 +23624,9 @@ paths:
                     provider_id:
                       type: string
                       example: '61'
+                    role:
+                      type: string
+                      example: provider_admin
                   required:
                   - email
                   - password
@@ -23642,8 +23639,9 @@ paths:
                     email: user@example.com
                     password: password123
                     password_confirmation: password123
-                    provider_id: 61 (ID Will be currently set to nil by default at
-                      this time)
+                    provider_id: '61'
+                    role: provider_admin (role is set to provider_admin by default
+                      if not specified, current roles are provider_admin and super_admin)
         required: true
   "/login":
     post:

@@ -1,12 +1,18 @@
 class ApplicationController < ActionController::API
   before_action :handle_swagger_request
+  rescue_from ArgumentError, with: :handle_argument_error
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:provider_id, :role])
+  end
 
   private
 
   def handle_swagger_request
     # Check if this is a request from Swagger UI
-    return unless request.headers['Origin']&.include?('swagger') || 
-                  request.headers['Referer']&.include?('swagger')
+    return unless from_swagger_ui?
 
     # Only intercept write operations
     if ['POST', 'PUT', 'PATCH', 'DELETE'].include?(request.method_symbol.to_s.upcase)
@@ -23,6 +29,13 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def from_swagger_ui?
+    return true if request.headers['Referer']&.include?('api-docs') ||
+                   request.headers['Referer']&.include?('swagger') ||
+                   request.headers['Origin']&.include?('api-docs') ||
+                   request.headers['Origin']&.include?('swagger')
+  end
+
   def filtered_params
     # Filter out sensitive data from the params
     params.to_unsafe_h.except(
@@ -32,5 +45,16 @@ class ApplicationController < ActionController::API
       'token', 
       'api_key'
     )
+  end
+
+  # error handling 
+  def handle_argument_error(exception)
+    render json: {
+      status: {
+        code: 422,
+        message: "Invalid argument provided",
+        errors: [exception.message]
+      }
+    }, status: :unprocessable_entity
   end
 end

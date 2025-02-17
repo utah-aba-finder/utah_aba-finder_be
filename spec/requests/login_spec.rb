@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User Login' do
   before(:each) do
-    user = User.create!(email: "test@test.com", password: "password")
+    user = User.create!(email: "test@test.com", password: "password", provider_id: 61)
   end
   context "login/logout" do
     it "user can login with credentials" do
