@@ -11,6 +11,10 @@ class ApplicationController < ActionController::API
   private
 
   def handle_swagger_request
+    # For use when localhost is set up on API repo
+    # Skip in development or for localhost requests
+    # return if Rails.env.development? || request.host == 'localhost'
+
     # Check if this is a request from Swagger UI
     return unless from_swagger_ui?
 
